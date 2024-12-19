@@ -35,7 +35,7 @@ isForwarded: false,
 title: "❤️ Piropo", 
 body: "🌹 Una palabra bonita para ti 💕",
 "previewType": "PHOTO",
-thumbnailUrl: ImgRandom, 
+thumbnailUrl: "https://qu.ax/nWgle.jpg", 
 sourceUrl: [canal1, canal2, yt2].getRandom()}}}, { quoted: null})
 }
 
@@ -62,7 +62,7 @@ isForwarded: false,
 title: "💬 Frase del día", 
 body: "✨ Inspiración para hoy 🌟",
 "previewType": "PHOTO",
-thumbnailUrl: ImgRandom, 
+thumbnailUrl: "https://qu.ax/nWgle.jpg", 
 sourceUrl: [canal1, canal2, yt2].getRandom()}}}, { quoted: null})
 }
 };
