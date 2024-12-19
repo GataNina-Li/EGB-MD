@@ -30,7 +30,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 const ADMIN_GROUP_ID = "120363317570465699@g.us"
 const CANAL_ID = WC.infinity.id
 const CANAL_LINK = WC.infinity.link
-const LEYENDA = `Este proceso es para enviar tú contenido al canal ${WC.infinity.name}\n\n> Si deseas enviar tu contenido a otro canal usa el comando *${usedPrefix}menu*`
+const LEYENDA = `Este proceso es para enviar tú contenido al canal *${WC.infinity.name}*\n\n> Si deseas enviar tu contenido a otro canal usa el comando *${usedPrefix}menu*`
      
 let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => img5)
