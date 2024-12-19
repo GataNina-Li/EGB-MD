@@ -13,10 +13,8 @@
 "scripts": {
 "start": "node index.js",
 "qr": "node index.js qr", 
-"code": "node index.js code",
-"vortexus": "bash vortexus.sh",   
-"test": "node test.js",
-"test2": "nodemon index.js" },
+"code": "node index.js code"
+},
     
 "homepage": "https://github.com/GataNina-Li/EGB-MD",
 "author": {
