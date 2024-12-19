@@ -32,9 +32,9 @@ return m.reply(`📜 Para ver todos los comandos disponibles, visita el menú pr
 case '2':
 let result = ''
 Object.entries(global.WC).forEach(([key, channel]) => {
-result += `*${channel.name}* \`(${channel.command})\`\n_${channel.link}_\n\n`
+result += `*${channel.name}* \`(${usedPrefix}${channel.command})\`\n_${channel.link}_\n\n`
 })
-return m.reply(`*Aquí tienes una lista de canales donde puedes enviar tu contenido con previa revisión. Utiliza el comando correspondiente para publicar tú contenido:*\n${result}`)
+return m.reply(`*Aquí tienes una lista de canales donde puedes enviar tu contenido con previa revisión. Utiliza el comando correspondiente para publicar tú contenido:*\n\n${result}`)
 
 case '3':
 return m.reply(`*Explicación sobre tu reputación:* ⭐\n\nTu reputación es una medida de tu comportamiento y participación dentro de la comunidad. Cuanto mejor sea tu reputación, más rápido podrás interactuar con el bot y participar en más actividades.`);
