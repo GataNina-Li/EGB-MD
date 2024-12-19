@@ -23,38 +23,48 @@ let menu = `*◈ ${user.registered === true ? user.name : `👉 ${usedPrefix}${l
 t.me/globalgb
 
 > Descubre más sobre este bot
-${usedPrefix}suginfo
+\`${usedPrefix}suginfo\`
+
+> Sugiere algo para este bot
+\`${usedPrefix}opinar\`
 
 > Promociona te gratis en canales
-${usedPrefix}suginfinity
+\`${usedPrefix}suginfinity\`
 ${WC.infinity.link}
 
-${usedPrefix}sugpoetix
+\`${usedPrefix}sugpoetix\`
 ${WC.poetix.link}
 
-${usedPrefix}suggatabot
+\`${usedPrefix}suggatabot\`
 ${WC.gatabot.link}
 
 > Descubre tú reputación 
-${usedPrefix}reputacion
+\`${usedPrefix}reputacion\`
 
 > Mira quienes están en el top
-${usedPrefix}top
+\`${usedPrefix}top\`
 
 > Recolecta gratis puntos de reputación 
-${usedPrefix}recolectar
+\`${usedPrefix}recolectar\`
 
 > Intercambia Estrellas por pts. de reputación
-${usedPrefix}trueque
+\`${usedPrefix}trueque\`
 
 > Beneficíate de un rol especial
-${usedPrefix}vip
+\`${usedPrefix}vip\`
 
 > Conoce nuestros patrocinadores
-${usedPrefix}patrocinadores
+\`${usedPrefix}patrocinadores\`
 
 > Contacta con los que hicieron posible esto
-${usedPrefix}creadores
+\`${usedPrefix}creadores\`
+
+> Ayúdanos a mejorar lo que ofrecemos
+\`${usedPrefix}donar\`
+_Recompesas para quienes donen, reclama tú recompensa a los creadores_
+
+*🤗 ¿Te gustaría colaborar con nosotros?*
+_Contacta con los creadores_
 
 _© Evolution Global Bots_
 ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ ∙ ∙ ∙ ∙
