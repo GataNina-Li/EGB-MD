@@ -1,6 +1,7 @@
 import { webp2png } from '../lib/webp2mp4.js'
 import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
+import '../plugins/_content.js'
 import axios from 'axios'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
