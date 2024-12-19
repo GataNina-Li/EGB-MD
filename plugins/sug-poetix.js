@@ -1,7 +1,6 @@
 import { webp2png } from '../lib/webp2mp4.js'
 import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
-import '../plugins/_content.js'
 import axios from 'axios'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
@@ -26,12 +25,11 @@ const reputationTimes = [
 ]
 
 const ADMIN_ID = "120363317570465699@g.us"  
-
-let handler = async (m, { conn, text, usedPrefix, command }) => {
 const CANAL_ID = global.WC.poetix.id
 const CANAL_LINK = global.WC.poetix.link
 const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC.poetix.name}*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
-     
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
 let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
 
