@@ -34,7 +34,7 @@ global.img4 = 'https://qu.ax/fCVpY.jpg'
 global.img5 = 'https://qu.ax/nWgle.jpg'
 
 global.ImgRandom = [img, img2, img3, img4, img5].getRandom()
-global.imagenRandom = [imagen1, imagen2, imagen3].getRandom()
+//global.imagenRandom = [imagen1, imagen2, imagen3].getRandom()
 global.accounts = [canal1, canal2, canal3, canal4, canal5, tk, ig, yt, paypal, fb, ths, md, asistencia, tg].getRandom()
 
 global.canalIdGB = ["120363160031023229@newsletter", "120363169294281316@newsletter", "120363203805910750@newsletter", "120363302472386010@newsletter", "120363374372683775@newsletter", "120363336642332098@newsletter", "120363190430436554@newsletter"]
