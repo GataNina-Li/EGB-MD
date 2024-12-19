@@ -35,6 +35,7 @@ const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC
      
 let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
+
 if (!global.db.data.users[m.sender]) {
   global.db.data.users[m.sender] = {
     reputation: 0,
@@ -146,6 +147,15 @@ await conn.sendMessage(ADMIN_ID, {text: confirmMessage, mentions: [m.sender]}, {
 
 handler.before = async (response) => {
 if (!response.text || !response.text.match(/^(si|no)\s*(\d+)?/i)) return
+
+if (!global.db.data.users[m.sender]) {
+  global.db.data.users[m.sender] = {
+    reputation: 0,
+    suggetimme: 0
+  };
+}
+
+let users = global.db.data.users[m.sender];
 
 let groupMetadata = await conn.groupMetadata(ADMIN_ID)
 let groupAdmins = groupMetadata.participants.filter(p => p.admin)
