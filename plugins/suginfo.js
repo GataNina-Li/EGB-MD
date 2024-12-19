@@ -37,7 +37,10 @@ result += `*${channel.name}* \`(${usedPrefix}${channel.command})\`\n_${channel.l
 return m.reply(`*Aquí tienes una lista de canales donde puedes enviar tu contenido con previa revisión. Utiliza el comando correspondiente para publicar tú contenido:*\n\n${result}`)
 
 case '3':
-return m.reply(`*Explicación sobre tu reputación:* ⭐\n\nTu reputación es una medida de tu comportamiento y participación dentro de la comunidad. Cuanto mejor sea tu reputación, más rápido podrás interactuar con el bot y participar en más actividades.`);
+return m.reply(`Tu reputación es un marcador dentro del bot que refleja tu nivel de actividad y la calidad de tu participación. Todos los usuarios comienzan con una puntuación de cero, y pueden ganar puntos cuando solicitan que su contenido sea publicado en un canal, siempre y cuando la revisión de su solicitud sea aprobada.
+\nEs importante tener en cuenta que tu reputación puede subir o bajar, pero no te preocupes. Aunque tengas una "mala reputación", seguirás teniendo la posibilidad de solicitar que se publique contenido en los canales. La reputación no es un obstáculo, sino una forma de premiar tu participación activa.
+\nEl propósito principal de la reputación es reducir el tiempo de espera entre las solicitudes de publicación en los canales. Cuanto mejor sea tu reputación, menor será el tiempo que tendrás que esperar entre cada solicitud.
+\nSi quieres saber como mejorar tú reputación usa el comando *${usedPrefix + command} 9*`)
 
 case '4':
 return m.reply(`*¿Qué puedes enviar a los canales?* 📤\n\nPuedes enviar sugerencias, preguntas, comentarios sobre música, películas, juegos, eventos, entre otros. Cada canal tiene su propósito y tipo de contenido aceptado.`);
