@@ -25,9 +25,9 @@ const reputationTimes = [
 ]
 
 const ADMIN_ID = "120363317570465699@g.us"  
-const CANAL_ID = global.WC.poetix.id
-const CANAL_LINK = global.WC.poetix.link
-const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC.poetix.name}*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
+const CANAL_ID = "120363374372683775@newsletter"
+const CANAL_LINK = "https://whatsapp.com/channel/0029VayNseN2phHUJygRvH3H"
+const LEYENDA = `Este proceso es para enviar tú contenido al canal *🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
