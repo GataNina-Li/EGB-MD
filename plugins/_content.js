@@ -13,7 +13,6 @@ let pp = await this.profilePictureUrl(who, 'image').catch(_ => "https://telegra.
 global.tk = 'https://www.tiktok.com/@gata_dios'
 global.ths = 'https://www.threads.net/@gata_dios'
 global.yt = 'https://youtube.com/@gatadios'
-global.yt2 = 'https://youtu.be/Ko019wvu2Tc'
 global.ig = 'https://www.instagram.com/gata_dios'
 global.md = 'https://github.com/GataNina-Li'
 global.fb = 'https://www.facebook.com/groups/872989990425789'
