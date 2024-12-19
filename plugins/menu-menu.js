@@ -26,13 +26,13 @@ let menu = `
 └──── °∘Ξ∘° ────┘
 :･ﾟ✵ :･ﾟ✧ :･ﾟ✵ *:･ﾟ✧:･ﾟ✵ :･ﾟ✧:･ﾟ
 
-> Descubre más sobre este bot
+> ∵ Descubre más sobre este bot
 \`${usedPrefix}suginfo\`
 
-> Sugiere algo para este bot
+> ∵ Sugiere algo para este bot
 \`${usedPrefix}opinar\`
 
-> Promociona te gratis en canales
+> ∵ Promociona te gratis en canales
 \`${usedPrefix}suginfinity\`
 ${WC.infinity.link}
 
@@ -42,31 +42,31 @@ ${WC.poetix.link}
 \`${usedPrefix}suggatabot\`
 ${WC.gatabot.link}
 
-> Descubre tú reputación 
+> ∵ Descubre tú reputación 
 \`${usedPrefix}reputacion\`
 
-> Mira quienes están en el top
+> ∵ Mira quienes están en el top
 \`${usedPrefix}top\`
 
-> Recolecta gratis puntos de reputación 
+> ∵ Recolecta gratis puntos de reputación 
 \`${usedPrefix}recolectar\`
 
-> Intercambia Estrellas por pts. de reputación
+> ∵ Intercambia Estrellas por pts. de reputación
 \`${usedPrefix}trueque\`
 
-> Beneficíate de un rol especial
+> ∵ Beneficíate de un rol especial
 \`${usedPrefix}vip\`
 
-> (Opcional) Verificate y gana estrellas
+> ∵ (Opcional) Verificate y gana estrellas
 \`${usedPrefix}verificar\`
 
-> Conoce nuestros patrocinadores
+> ∵ Conoce nuestros patrocinadores
 \`${usedPrefix}patrocinadores\`
 
-> Contacta con los que hicieron posible esto
+> ∵ Contacta con los que hicieron posible esto
 \`${usedPrefix}creadores\`
 
-> Ayúdanos a mejorar lo que ofrecemos
+> ∵ Ayúdanos a mejorar lo que ofrecemos
 \`${usedPrefix}donar\`
 _Recompesas para quienes donen, reclama tú recompensa a los creadores_
 
