@@ -26,14 +26,14 @@ const reputationTimes = [
 { reputation: 30, time: 1 * 60 * 1000 }      // 1 minuto
 ]
 
-const ADMIN_GROUP_ID = "120363317570465699@g.us";
-const CANAL_ID = "120363160031023229@newsletter"
-const CANAL_LINK = "https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A"
-const LEYENDA = `Este proceso es para enviar tú contenido al canal *INFINITY-WA 💫*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
-
 let handler = async (m, { conn, text, usedPrefix, command }) => {
+const ADMIN_GROUP_ID = "120363317570465699@g.us"
+const CANAL_ID = WC.infinity.id
+const CANAL_LINK = WC.infinity.link
+const LEYENDA = `Este proceso es para enviar tú contenido al canal ${WC.infinity.name}\n\n> Si deseas enviar tu contenido a otro canal usa el comando *${usedPrefix}menu*`
+     
 let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
-let pp = await conn.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
+let pp = await conn.profilePictureUrl(who, 'image').catch(_ => img5)
 let users = global.db.data.users[m.sender]
      
 let waitTime = getWaitTime(users.reputation) // Obtiene el tiempo de espera según la reputación del usuario
@@ -73,7 +73,7 @@ url = await webp2png(media)
 
 let [categoryChoice, ...rest] = text.split(' ')
 let suggestionText = rest.join(' ')
-if (!suggestionText && !media) return m.reply(`⚠️ Por favor, agrega un texto o archivo multimedia después de seleccionar la categoría.\n  
+if (!suggestionText && !media) return m.reply(`*⚠️ Por favor, agrega un texto o archivo multimedia después de seleccionar la categoría.*\n  
 *Ejemplo:*\n*${usedPrefix + command} 1 Mi sugerencia es...*\n\n${LEYENDA}`)
 
 let categories = {
@@ -110,11 +110,10 @@ let categories = {
   '31': 'meme'
 }
 
-
 let category = categories[categoryChoice]
-if (!category) return m.reply(`*⚠️ Opción inválida.*\n\nPor favor, elige una categoría válida: 1, 2, 3 o 4. Revisa las opciones disponibles usando el comando *${usedPrefix + command}* antes de intentarlo nuevamente.\n\n${LEYENDA}`)
+if (!category) return m.reply(`*⚠️ Opción inválida.*\n\nPor favor, elige una categoría válida: 1, 2, 3 o 4. Revisa las opciones disponibles usando el comando *${usedPrefix + command}*\n\n${LEYENDA}`)
 
-await m.reply(`✅ Tu publicación ha sido enviada a los administradores para su revisión.\n
+await m.reply(`✅ *Tu publicación ha sido enviada a los administradores para su revisión.*\n
 📌 *Proceso de revisión:*
 - Si la revisión es exitosa, recibirás un mensaje positivo y lo solicitado será publicado en el canal.  
 - Si la revisión no es exitosa, recibirás un mensaje negativo y, opcionalmente, los administradores podrán informarte la razón del rechazo.\n
@@ -176,13 +175,13 @@ let matches_motivo = response.text.match(/^(si|no)\s*(\d+)?\s*(.*)?/i)
 let action_motivo = matches[1].toLowerCase()
 let suggestionId_motivo = matches[2]
 let reason_motivo = matches[3]?.trim() || "Los administradores no dejaron un motivo específico"
-
+console.log(matches[3]?.trim())
 if (!suggestionId || !suggestionQueue[suggestionId]) {
 return
 }
 
 const { suggestionText, category, sender, senderName, pp, url, mime } = suggestionQueue[suggestionId]
-let users = global.db.data.users[response.sender];
+let users = global.db.data.users[response.sender]
 
 if (action === 'no') {
 if (users.reputation > 0) {
@@ -199,7 +198,7 @@ return
 if (action === 'si') {
 users.reputation += 1
 await conn.sendMessage(ADMIN_GROUP_ID, { react: { text: "✅", key: response.key } })
-let approvedText = `👤 *Usuario:* ${senderName || 'Anónimo'}\n📝 *${category.charAt(0).toUpperCase() + category.slice(1)}:* ${suggestionText || 'Sin descripción'}`
+let approvedText = `${suggestionText ? `📝 *${category.charAt(0).toUpperCase() + category.slice(1)}:* ${suggestionText || 'Sin descripción'}` : ''}\n\n_¡Envia mensaje a este canal!_\nWa.me/${conn.user.jid.split('@')[0]}?text=${usedPrefix}menu`
 let title, body
 
 switch (category) {
@@ -312,7 +311,8 @@ break
 }
 
 let options = { contextInfo: { externalAdReply: {
-title: title, body: body,
+title: title, 
+body: body,
 thumbnailUrl: pp, 
 sourceUrl: yt2,
 mediaType: 1,
@@ -332,7 +332,7 @@ await conn.reply(sender, `✅ *¡Tu publicación ha sido aprobada por los admini
 
 delete suggestionQueue[suggestionId]
 }}
-handler.command = /^(suggestion|propuesta|feedback|idea|contenido|sug|suggest|suginfinity)$/i
+handler.command = /^(suginfinity)$/i
 
 export default handler
 
