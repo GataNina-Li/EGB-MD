@@ -27,13 +27,11 @@ const reputationTimes = [
 ]
 
 const ADMIN_GROUP_ID = "120363317570465699@g.us";
+const CANAL_ID = "120363160031023229@newsletter"
+const CANAL_LINK = "https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A"
+const LEYENDA = `Este proceso es para enviar tú contenido al canal *INFINITY-WA 💫*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-//const ADMIN_GROUP_ID = "120363317570465699@g.us"  
-const CANAL_ID = global.WC.infinity.id
-const CANAL_LINK = global.WC.infinity.link
-const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC.infinity.name}*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
-     
 let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
 let users = global.db.data.users[m.sender]
@@ -184,6 +182,8 @@ return
 }
 
 const { suggestionText, category, sender, senderName, pp, url, mime } = suggestionQueue[suggestionId]
+let users = global.db.data.users[response.sender];
+
 if (action === 'no') {
 if (users.reputation > 0) {
 users.reputation -= 1
@@ -312,7 +312,7 @@ break
 let options = { contextInfo: { externalAdReply: {
 title: title, body: body,
 thumbnailUrl: pp, 
-sourceUrl: accountsgb,
+sourceUrl: yt2,
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
