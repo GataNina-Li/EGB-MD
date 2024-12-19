@@ -25,15 +25,15 @@ if (!result || result.trim() === "") throw new Error("Respuesta vacía");
 result = pickRandom(global.piropo); 
 }
 
-await conn.sendMessage(m.chat, { text: `${result}`,
+await conn.sendMessage(CANAL_ID, { text: `${result}`,
 contextInfo:{
 forwardingScore: 9999999,
 isForwarded: false, 
 "externalAdReply": {
 "showAdAttribution": true,
 "containsAutoReply": true,
-title: "❤️ Piropo del día", 
-body: "🌹 ¡Algo bonito para alegrar tu día! 💕",
+title: "❤️ Piropo", 
+body: "🌹 Una palabra bonita para ti 💕",
 "previewType": "PHOTO",
 thumbnailUrl: ImgRandom, 
 sourceUrl: [canal1, canal2, yt2].getRandom()}}}, { quoted: null})
@@ -52,7 +52,7 @@ if (!result || result.trim() === "") throw new Error("Respuesta vacía");
 result = pickRandom(global.frases); 
 }
 
-await conn.sendMessage(m.chat, { text: `✨ ${result} ✨`,
+await conn.sendMessage(CANAL_ID, { text: `✨ ${result} ✨`,
 contextInfo:{
 forwardingScore: 9999999,
 isForwarded: false, 
@@ -60,7 +60,7 @@ isForwarded: false,
 "showAdAttribution": true,
 "containsAutoReply": true,
 title: "💬 Frase del día", 
-body: "✨ ¡Descubre la inspiración que tenemos para ti hoy! 🌟",
+body: "✨ Inspiración para hoy 🌟",
 "previewType": "PHOTO",
 thumbnailUrl: ImgRandom, 
 sourceUrl: [canal1, canal2, yt2].getRandom()}}}, { quoted: null})
