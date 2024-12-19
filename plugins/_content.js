@@ -6,7 +6,9 @@ const { generateWAMessageFromContent, prepareWAMessageMedia, proto }  = (await i
 
 let handler = m => m
 handler.before = async function (m, { conn } ) {
-
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? this.user.jid : m.sender
+let pp = await this.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
+  
 // redes
 global.tk = 'https://www.tiktok.com/@gata_dios'
 global.ths = 'https://www.threads.net/@gata_dios'
