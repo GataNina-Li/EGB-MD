@@ -18,13 +18,22 @@ let menu = `*◈ ${user.registered === true ? user.name : `👉 ${usedPrefix}${l
 *˚₊·˚₊· ͟͟͞͞➳❥ @${m.sender.split("@")[0]}*
 *˚₊·˚₊· ͟͟͞͞➳❥* ${packname}${conn.user.jid == global.conn.user.jid ? '' : `\n*˚₊·˚₊· ͟͟͞͞➳❥* 𝗚𝗕 - 𝗦𝗨𝗕 𝗕𝗢𝗧 ⇢ *@${global.conn.user.jid.split`@`[0]}*`}
 *☆═━┈◈ ╰ ${vs} ㎇ ╯ ◈┈━═☆*
+
+*Únete a nuestro canal de Telegram*
+t.me/globalgb
+
 > Descubre más sobre este bot
 ${usedPrefix}suginfo
 
 > Promociona te gratis en canales
 ${usedPrefix}suginfinity
+${WC.infinity.link}
+
 ${usedPrefix}sugpoetix
+${WC.poetix.link}
+
 ${usedPrefix}suggatabot
+${WC.gatabot.link}
 
 > Descubre tú reputación 
 ${usedPrefix}reputacion
@@ -37,6 +46,17 @@ ${usedPrefix}recolectar
 
 > Intercambia Estrellas por pts. de reputación
 ${usedPrefix}trueque
+
+> Beneficíate de un rol especial
+${usedPrefix}vip
+
+> Conoce nuestros patrocinadores
+${usedPrefix}patrocinadores
+
+> Contacta con los que hicieron posible esto
+${usedPrefix}creadores
+
+_© Evolution Global Bots_
 ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ ∙ ∙ ∙ ∙
  `.trim()
     
