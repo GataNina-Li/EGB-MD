@@ -89,9 +89,9 @@ global.canalNombreGB = ["INFINITY-WA 💫", "GB - UPDATE 🐈", "Tips sobre Gata
 global.channelRD = await getRandomChannel()
 
 global.WC = {
-infinity: { name: "INFINITY-WA 💫", id: "120363160031023229@newsletter", link: "https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A" },
-poetix: { name: "🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ", id: "120363374372683775@newsletter", link: "https://whatsapp.com/channel/0029VayNseN2phHUJygRvH3H" },
-gatabot: { name: "GataBot Test", id: "120363336642332098@newsletter", link: "https://whatsapp.com/channel/0029VatPwXw7Noa8n1Vinx3g" }
+infinity: { name: "INFINITY-WA 💫", id: "120363160031023229@newsletter", link: "https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A", command: "suginfinity" },
+poetix: { name: "🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ", id: "120363374372683775@newsletter", link: "https://whatsapp.com/channel/0029VayNseN2phHUJygRvH3H", command: "sugpoetix" },
+gatabot: { name: "GataBot Test", id: "120363336642332098@newsletter", link: "https://whatsapp.com/channel/0029VatPwXw7Noa8n1Vinx3g", command: "suggatabot" }
 }
 
 global.fakeChannel = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: wm, body: vs, mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: gataImg.getRandom(), thumbnail: imagen1, sourceUrl: accountsgb }}}, { quoted: m }
