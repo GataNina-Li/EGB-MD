@@ -66,6 +66,7 @@ sourceUrl: pickRandom([canal1, canal2, yt2])}}}, { quoted: null})
 handler.help = ['random']; 
 handler.tags = ['random'];
 handler.command = /^(test40)$/i; 
+handler.owner = true
 
 export default handler;
 
