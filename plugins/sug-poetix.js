@@ -26,7 +26,8 @@ const reputationTimes = [
 { reputation: 30, time: 1 * 60 * 1000 }      // 1 minuto
 ]
 
-const ADMIN_GROUP_ID = "120363317570465699@g.us";
+
+const ADMIN_ID = "120363317570465699@g.us"  
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 //const ADMIN_ID = "120363317570465699@g.us"  
