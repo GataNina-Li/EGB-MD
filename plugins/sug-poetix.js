@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 let suggestionQueue = {}
-const MAX_VIDEO_SIZE_MB = 40 // Límite de 40MB X videos
+const MAX_VIDEO_SIZE_MB = 65 // Límite de 65MB X videos
 
 // tiempo de espera según la reputación
 const reputationTimes = [
