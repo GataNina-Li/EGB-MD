@@ -1,7 +1,9 @@
 import hispamemes from 'hispamemes';
 import axios from 'axios';
 
-export async function before(m,{ conn }) {
+let handler = m => m;
+
+handler.all = async function (m, {conn}) {
 
 setInterval(async () => {
   const fake2 = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: [canal1, yt].getRandom()}}}  
