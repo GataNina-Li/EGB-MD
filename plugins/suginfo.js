@@ -31,7 +31,7 @@ return m.reply(`📜 Para ver todos los comandos disponibles, visita el menú pr
 
 case '2':
 let result = ''
-Object.entries(global.WC).forEach(([key, commandBot, channel]) => {
+Object.entries(global.WC).forEach(([key, channel]) => {
 result += `*${channel.name}* \`(${channel.command})\`\n_${channel.link}_\n\n`
 })
 return m.reply(`*Aquí tienes una lista de canales donde puedes enviar tu contenido con previa revisión. Utiliza el comando correspondiente para publicar tú contenido:*\n${result}`)
