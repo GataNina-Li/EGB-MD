@@ -40,7 +40,6 @@ global.accounts = [canal1, canal2, canal3, canal4, canal5, tk, ig, yt, paypal, f
 global.canalIdGB = ["120363160031023229@newsletter", "120363169294281316@newsletter", "120363203805910750@newsletter", "120363302472386010@newsletter", "120363374372683775@newsletter", "120363336642332098@newsletter", "120363190430436554@newsletter"]
 global.canalNombreGB = ["INFINITY-WA 💫", "GB - UPDATE 🐈", "Tips sobre GataBot 🤩", "NEW PROJECT: YartexBot-MD ✨", "🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ", "GataBot Test", "༻🅖🅔🅝ⓑⓛ༺"]
 global.channelRD = await getRandomChannel()
-console.log(channelRD)
   
 global.WC = {
 infinity: { name: "INFINITY-WA 💫", id: "120363160031023229@newsletter", link: "https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A", command: "suginfinity" },
@@ -48,7 +47,7 @@ poetix: { name: "🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ", id: "12036337437
 gatabot: { name: "GataBot Test", id: "120363336642332098@newsletter", link: "https://whatsapp.com/channel/0029VatPwXw7Noa8n1Vinx3g", command: "suggatabot" }
 }
 
-global.fakeChannel = { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1 }, forwardingScore: 1, externalAdReply: { title: "Bot personalizado by GataNina-Li", body: "Evolution Global Bots", thumbnailUrl: img5, sourceUrl: accounts, mediaType: 1, renderLargerThumbnail: false }}
+global.fakeChannel = { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.nombre, serverMessageId: -1 }, forwardingScore: 1, externalAdReply: { title: "Bot personalizado by GataNina-Li", body: "Evolution Global Bots", thumbnailUrl: img5, sourceUrl: accounts, mediaType: 1, renderLargerThumbnail: false }}
 global.fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
 }
