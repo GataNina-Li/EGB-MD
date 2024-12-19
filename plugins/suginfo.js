@@ -54,36 +54,9 @@ return m.reply(`✨ *Las estrellas que obtienes son una forma de dar fama a los 
 \nConoce los canles disponibles que permiten solicitar que se envíe contenido con el comando *${usedPrefix + command} 2*
 \nIntercambia estrellas ⭐ por puntos de reputación 👾 usando el comando *${usedPrefix}trueque*`)
 
-case '6':
-return m.reply(`*¿Cómo reducir el tiempo de espera para enviar algo en un canal?* ⏳\n\nTu tiempo de espera depende de tu reputación. Cuanto mejor sea tu reputación, menor será el tiempo de espera para enviar contenido. Mejora tu reputación participando activamente.`);
-
-        case '7':
-            return m.reply(`*¿Cómo eliminar mi tiempo de espera?* ❌\n\nPuedes eliminar tu tiempo de espera si mejoras tu reputación. Usa el comando *${usedPrefix}reputacion* para ver cómo mejorarla y reducir tu tiempo de espera.`);
-
-        case '8':
-            return m.reply(`*¿Qué pasa si mi reputación es mala?* 🚫\n\nSi tu reputación es baja, tendrás que esperar más tiempo para enviar contenido a los canales y no podrás acceder a ciertos beneficios. Trabaja en mejorarla participando de forma positiva.`);
-
-        case '9':
-            return m.reply(`*¿Cómo puedo mejorar mi reputación?* 💪\n\nMejora tu reputación participando activamente, ayudando a otros usuarios, enviando sugerencias útiles y contribuyendo de manera positiva a la comunidad. Recuerda que la calidad siempre cuenta.`);
-
-        case '10':
-            return m.reply(`*¿Cómo ser usuario VIP?* 👑\n\nPara ser un usuario VIP, necesitas tener una alta reputación y mostrar un comportamiento ejemplar dentro de la comunidad. También podrás obtener beneficios exclusivos como menos tiempo de espera y más oportunidades para interactuar.`);
-
-        case '11':
-            return m.reply(`*¿Por qué este bot tiene permitido enviar contenido a los canales?* 🤖\n\nEste bot está diseñado para facilitar la interacción de los usuarios con la comunidad. Está configurado para permitir la publicación de contenido de acuerdo con las reglas establecidas para mantener la calidad del contenido.`);
-
-        case '12':
-            return m.reply(`*Colaboradores que participan:* 🤝\n\nLos colaboradores son usuarios con alta reputación que ayudan a moderar y administrar el contenido en los canales. Gracias a ellos, mantenemos el orden y la calidad de las publicaciones.`);
-
-        case '13':
-            return m.reply(`*¿Cómo puedo saber más información mía en este bot?* ℹ️\n\nPuedes usar el comando *${usedPrefix}mi_info* para ver detalles sobre tu reputación, el tiempo de espera y otras estadísticas relacionadas con tu actividad en el bot.`);
-
-        case '14':
-            return m.reply(`*¿Para qué sirve este bot?* 🤖\n\nEste bot está diseñado para mejorar la experiencia de la comunidad permitiendo la interacción a través de sugerencias, comentarios y más. Su objetivo es facilitar la participación y mejorar la calidad del contenido dentro de la plataforma.`);
-        
-        default:
-            return m.reply(`⚠️ *Opción no válida.*\n\nPor favor, elige un número entre 1 y 14 para obtener información sobre cada tema.`);
-    }}
+default:
+return m.reply(`⚠️ *Opción no válida.*\n\nPor favor, elige un número entre 1 y 14 para obtener información sobre cada tema.`)
+}}
 
 }
 handler.command = /^(suggestion|propuesta|feedback|idea|contenido|sug|suggest|suginfo)$/i
