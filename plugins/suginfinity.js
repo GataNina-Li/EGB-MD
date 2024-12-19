@@ -12,11 +12,10 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 let suggestionQueue = {}
-//let cooldown = {}; 
 const ADMIN_GROUP_ID = "120363317570465699@g.us"  
-const CANAL_ID = "120363160031023229@newsletter"
-const CANAL_LINK = "https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A"
-const LEYENDA = `Este proceso es para enviar tú contenido al canal *"INFINITY-WA 💫"*\nSi deseas enviar tu contenido a otro canal usa el comando *#menu*`
+const CANAL_ID = global.WC.infinity.id
+const CANAL_LINK = global.WC.infinity.link
+const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC.infinity.name}*\nSi deseas enviar tu contenido a otro canal usa el comando *#menu*`
 const MAX_VIDEO_SIZE_MB = 40 // Límite de 40MB X videos
 
 // tiempo de espera según la reputación
