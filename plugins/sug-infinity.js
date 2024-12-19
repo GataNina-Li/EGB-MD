@@ -332,7 +332,7 @@ await conn.reply(sender, `✅ *¡Tu publicación ha sido aprobada por los admini
 
 delete suggestionQueue[suggestionId]
 }}
-handler.command = /^(suginfinity)$/i
+handler.command = /^(suggestion|propuesta|feedback|idea|contenido|sug|suggest|suginfinity)$/i
 
 export default handler
 
