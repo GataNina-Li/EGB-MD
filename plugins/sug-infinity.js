@@ -26,8 +26,10 @@ const reputationTimes = [
 { reputation: 30, time: 1 * 60 * 1000 }      // 1 minuto
 ]
 
+const ADMIN_GROUP_ID = "120363317570465699@g.us";
+
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-const ADMIN_GROUP_ID = "120363317570465699@g.us"  
+//const ADMIN_GROUP_ID = "120363317570465699@g.us"  
 const CANAL_ID = global.WC.infinity.id
 const CANAL_LINK = global.WC.infinity.link
 const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC.infinity.name}*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
