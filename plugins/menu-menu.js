@@ -83,7 +83,7 @@ _© Evolution Global Bots_
  `.trim()
     
 try {
-await conn.sendMessage(CANAL_ID, { image: { url: ImgRandom }, caption: menu, mentions: [m.sender], contextInfo: fakeChannel2  }, { quoted: null })
+await conn.sendMessage(m.chat, { image: { url: ImgRandom }, caption: menu, mentions: [m.sender], contextInfo: fakeChannel2  }, { quoted: null })
 } catch (error) {
 console.log(error)
 }} catch (e) {
