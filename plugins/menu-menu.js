@@ -16,7 +16,7 @@ let user = global.db.data.users[m.sender]
 let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 let menu = `
 ∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴
-@${m.sender.split("@")[0]}*
+@${m.sender.split("@")[0]}
 ๑°°°°۞°°°°°°°°۞°°°°°°°°۞°°°°๑
 
 :･ﾟ✵ :･ﾟ✧ :･ﾟ✵ *:･ﾟ✧:･ﾟ✵ :･ﾟ✧:･ﾟ
@@ -70,6 +70,9 @@ ${WC.gatabot.link}
 \`${usedPrefix}donar\`
 _Recompesas para quienes donen, reclama tú recompensa a los creadores_
 
+> ∵ Impulsa tus publicaciones
+\`${usedPrefix}tienda\`
+
 ❪✧❫━━━━━━━━━━━━━━❪✧❫
 
 *🤗 ¿Te gustaría colaborar con nosotros?*
@@ -79,28 +82,14 @@ _© Evolution Global Bots_
 ∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴
  `.trim()
     
-const vi = ['https://telegra.ph/file/405daebd4bc0d69e5d165.mp4',
-'https://telegra.ph/file/1d0ad9f79f65f39895b08.mp4',
-'https://telegra.ph/file/c25afc1685b13210ce602.mp4']
 try {
-await conn.sendMessage(m.chat, { video: { url: vi.getRandom() }, gifPlayback: true, caption: menu, contextInfo: fakeChannel2 })
-//await conn.sendMessage(m.chat, { video: { url: vi.getRandom() }, gifPlayback: true, caption: menu, mentions: [m.sender] }, { quoted: fkontak }) 
+await conn.sendMessage(CANAL_ID, { image: { url: ImgRandom }, caption: menu, mentions: [m.sender], contextInfo: fakeChannel2  }, { quoted: null })
 } catch (error) {
-try {
-await conn.sendMessage(m.chat, { image: { url: gataMenu.getRandom() }, gifPlayback: false, caption: menu, mentions: [m.sender, global.conn.user.jid] }, { quoted: fkontak }) 
-} catch (error) {
-try {
-await conn.sendMessage(m.chat, { image: gataImg.getRandom(), gifPlayback: false, caption: menu, mentions: [m.sender, global.conn.user.jid] }, { quoted: fkontak }) 
-} catch (error) {
-try{
-await conn.sendFile(m.chat, imagen5, 'menu.jpg', menu, fkontak, false, { mentions: [m.sender, global.conn.user.jid] })
-} catch (error) {
-return 
-}}}} 
-} catch (e) {
-await m.reply(lenguajeGB['smsMalError3']() + '\n*' + lenguajeGB.smsMensError1() + '*\n*' + usedPrefix + `${lenguajeGB.lenguaje() == 'es' ? 'reporte' : 'report'}` + '* ' + `${lenguajeGB.smsMensError2()} ` + usedPrefix + command)
-console.log(`❗❗ ${lenguajeGB['smsMensError2']()} ${usedPrefix + command} ❗❗`)
-console.log(e)}}
+console.log(error)
+}} catch (e) {
+await m.reply("Algo salió mal, intente más tarde")
+console.log(e)
+}}
 
 handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|menucompleto|allmenu|allm|m|\?)$/i
 export default handler
