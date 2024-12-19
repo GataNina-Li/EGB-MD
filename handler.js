@@ -65,7 +65,9 @@ if (!isNumber(user.afk)) user.afk = -1
 if (!('role' in user)) user.role = '*NOVATO(A)* 🪤'
 if (!user.premium) user.premium = false
 if (!user.premium) user.premiumTime = 0
-                                                   		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+if (!user.suggetimme) user.suggetimme = 0
+if (!user.reputation) user.reputation = 0
+	                                               		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 } else
 global.db.data.users[m.sender] = {		    
 afk: -1,
@@ -83,6 +85,8 @@ GBLanguage: 0,
 regTime: -1,
 registered: false,
 role: '*NOVATO(A)* 🪤',
+suggetimme: 0,
+reputation: 0,
 }
 		
 let chat = global.db.data.chats[m.chat]
