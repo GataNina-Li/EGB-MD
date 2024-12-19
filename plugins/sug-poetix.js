@@ -1,5 +1,3 @@
-//Código echo por: https://github.com/elrebelde21 
-
 import { webp2png } from '../lib/webp2mp4.js'
 import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
@@ -175,7 +173,7 @@ if (!suggestionId || !suggestionQueue[suggestionId]) {
 return
 }
 
-const { users, suggestionText, category, sender, senderName, pp, url, mime } = suggestionQueue[suggestionId]
+const { suggestionText, category, sender, senderName, pp, url, mime } = suggestionQueue[suggestionId]
 if (action === 'no') {
 if (users.reputation > 0) {
 users.reputation -= 1
