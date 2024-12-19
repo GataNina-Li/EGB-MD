@@ -43,9 +43,9 @@ sourceUrl: yt
 o = e.message; 
 return m.reply(o)
 console.log(e)}}
-handler.help = ["speedtest2"];
+handler.help = ["speedtest"];
 handler.tags = ["main"];
-handler.command = /^(speedtest2)$/i;
+handler.command = /^(speedtest)$/i;
 handler.owner = true;
 export default handler
 
