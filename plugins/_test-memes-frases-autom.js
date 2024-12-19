@@ -67,7 +67,7 @@ body: "✨ Inspiración para hoy 🌟",
 "previewType": "PHOTO",
 thumbnailUrl: "https://qu.ax/nWgle.jpg", 
 sourceUrl: pickRandom([canal1, canal2, yt2])}}}, { quoted: null})
-}}, 10 * 60 * 60 * 1000); //10hs
+}}, 5 * 60 * 1000); //10hs
 }
 
 function pickRandom(list) {
