@@ -2,6 +2,7 @@ import hispamemes from 'hispamemes';
 import axios from 'axios';
 
 let handler = async (m, {command, conn}) => {
+const fake2 = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: pp, sourceUrl: [canal1, yt].getRandom()}}}  
 let CANAL_ID = "120363374372683775@newsletter";
 
 const url = await hispamemes.meme();
@@ -9,9 +10,8 @@ let or = ['memes', 'piropo', 'frases'];
 let media = pickRandom(or);
 
 if (media === 'memes') {
-await conn.sendFile(CANAL_ID, url, 'error.jpg', '', m, null, fake);
+await conn.sendFile(CANAL_ID, url, 'error.jpg', '', m, null, fake2);
 }
-
 
 if (media === 'piropo') {
 let query = 'Cuéntame un piropo, solo di el piropo no agregues más texto.';
