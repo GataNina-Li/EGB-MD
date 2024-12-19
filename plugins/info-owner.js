@@ -13,6 +13,17 @@ let handler = async (m, { conn, usedPrefix, text, args, command }) => {
     lista.push({ number, name: displayName || name || "Desconocido", bio });
   }
 
+  let vcards = lista.map(({ number, name, bio }) => (
+    `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nORG:${name}\nTITLE:\nTEL;waid=${number}:${number}\nX-ABLabel:${bio}\nEND:VCARD`
+  )).join("\n");
+
+  const vcardList = { 
+    contacts: lista.map(({ number, name, bio }) => ({
+      displayName: name,
+      vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nORG:${name}\nTITLE:\nTEL;waid=${number}:${number}\nX-ABLabel:${bio}\nEND:VCARD`
+    }))
+  };
+
   let cat = `💖🐈 𝘾𝙊𝙉𝙏𝘼𝘾𝙏𝙊 | 𝘾𝙊𝙉𝙏𝘼𝘾𝙏 💖🐈 
 
 *---------------------*
@@ -25,25 +36,14 @@ let handler = async (m, { conn, usedPrefix, text, args, command }) => {
 
 *---------------------*
 
-ᵃ ᶜᵒⁿᵗᶦⁿᵘᵃᶜᶦᵒ́ⁿ ˢᵉ ᵉⁿᵛᶦᵃʳᵃⁿ ˡᵒˢ ᶜᵒⁿᵗᵃᶜᵗᵒˢ ᵈᵉ ᵐᶦ ᵖʳᵒᵖᶦᵉᵗᵃʳᶦᵒ / ᵈᵉˢᵃʳʳᵒˡˡᵃᵈᵒʳᵉˢ`
+ᵃ ᶜᵒⁿᵗᶦⁿᵘᵃᶜᶦᵒ́ⁿ ˢᵉ ᵉⁿᵛᶦᵃʳᵃⁿ ˡᵒˢ ᶜᵒⁿᵗᵃᶜᵗᵒˢ ᵈᵉ ᵐᶦ ᵖʳᵒᵖᶦᵉᵗᵃʳᶦᵒ / ᵈᵉˢᵃʳʳᵒˡˡᵃᵈᵒʳᵉˢ`;
 
-  for (const item of lista) {
-    const { number, name, bio } = item;
-    cat += `• ${name}\n   📞 +${number}\n   📄 ${bio}\n\n`;
-  }
+  await conn.sendMessage(m.chat, { text: cat, contextInfo: { externalAdReply: { showAdAttribution: true, renderLargerThumbnail: true, title: wm, containsAutoReply: true, mediaType: 1, thumbnail: imagenRandom, sourceUrl: accounts }
+  }}, { quoted: fkontak });
 
-await conn.sendMessage(m.chat, { text: cat, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: canalIdGB, serverMessageId: canalNombreGB, newsletterName: wm }, forwardingScore: 9999999, isForwarded: true,    externalAdReply: { showAdAttribution: true,   renderLargerThumbnail: true, title: wm,   containsAutoReply: true, mediaType: 1,   thumbnail: imagenRandom, sourceUrl: accounts }}}, { quoted: fkontak });
-
-  for (const contact of lista) {
-    const { number, name, bio } = contact;
-    const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nORG:${name}\nTITLE:\nTEL;waid=${number}:${number}\nX-ABLabel:${bio}\nEND:VCARD`;
-    await conn.sendMessage(m.chat, { 
-      contacts: { 
-        displayName: name, 
-        contacts: [{ vcard }] 
-      }
-    }, { quoted: m });
-  }
+  await conn.sendMessage(m.chat, { 
+    contacts: vcardList.contacts 
+  }, { quoted: m });
 };
 
 handler.help = ['owner', 'creator', 'creador', 'dueño', 'fgowner'];
