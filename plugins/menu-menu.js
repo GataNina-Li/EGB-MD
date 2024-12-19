@@ -20,10 +20,10 @@ let menu = `
 @${m.sender.split("@")[0]}*
 ๑°°°°۞°°°°°°°°۞°°°°°°°°۞°°°°๑
 
-┌──────── ∘°❉°∘ ────────┐
-*Únete a nuestro canal de Telegram*
-t.me/globalgb
-└──────── °∘❉∘° ────────┘
+┌──── ∘°Ξ°∘ ────┐
+│ *Únete a nuestro canal de Telegram*
+│ t.me/globalgb
+└──── °∘Ξ∘° ────┘
 
 > Descubre más sobre este bot
 \`${usedPrefix}suginfo\`
