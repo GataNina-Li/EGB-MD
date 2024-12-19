@@ -2,70 +2,72 @@ import hispamemes from 'hispamemes';
 import axios from 'axios';
 
 let handler = async (m, {command, conn}) => {
-let CANAL_ID = "120363374372683775@newsletter";
+    let CANAL_ID = "120363374372683775@newsletter";
 
-const url = await hispamemes.meme();
-let or = ['memes', 'piropo', 'frases'];
-let media = or[Math.floor(Math.random() * 3)];
+    const url = await hispamemes.meme();
+    let or = ['memes', 'piropo', 'frases'];
+    let media = pickRandom(or);
 
-if (media === 'memes') {
-await conn.sendFile(CANAL_ID, url, 'error.jpg', '', m, null, fake);
-}
+    if (media === 'memes') {
+        await conn.sendFile(m.chat, url, 'error.jpg', '', m, null, false);
+    }
+
 
 if (media === 'piropo') {
-let query = 'Cuéntame un piropo, solo di el piropo no agregues mas texto.';
-let username = m.sender;
-let logic = "piropo"; 
-let result;
+        let query = 'Cuéntame un piropo, solo di el piropo no agregues más texto.';
+        let username = m.sender;
+        let logic = "piropo"; 
+        let result;
 
-try {
-result = await luminsesi(query, username, logic);
-if (!result || result.trim() === "") throw new Error("Respuesta vacía");
-} catch (error) {
-result = pickRandom(global.piropo); 
-}
+        try {
+            result = await luminsesi(query, username, logic);
+            if (!result || result.trim() === "") throw new Error("Respuesta vacía");
+        } catch (error) {
+            result = pickRandom(global.piropo); 
+        }
 
-await conn.sendMessage(CANAL_ID, { text: `${result}`,
-contextInfo:{
-forwardingScore: 9999999,
-isForwarded: false, 
-"externalAdReply": {
-"showAdAttribution": true,
-"containsAutoReply": true,
-title: "❤️ Piropo", 
-body: "🌹 Una palabra bonita para ti 💕",
-"previewType": "PHOTO",
-thumbnailUrl: "https://qu.ax/nWgle.jpg", 
-sourceUrl: [canal1, canal2, yt2].getRandom()}}}, { quoted: null})
-}
+        await conn.sendMessage(m.chat, { text: `${result}`,
+            contextInfo:{
+                forwardingScore: 9999999,
+                isForwarded: false, 
+                "externalAdReply": {
+                    "showAdAttribution": true,
+                    "containsAutoReply": true,
+                    title: "❤️ Piropo", 
+                    body: "🌹 Una palabra bonita para ti 💕",
+                    "previewType": "PHOTO",
+                    thumbnailUrl: "https://qu.ax/nWgle.jpg", 
+                    sourceUrl: pickRandom([canal1, canal2, yt2])}}}, { quoted: null})
+    }
 
 if (media === 'frases') {
-let query = 'Dime una frase inspiradora o motivacional.';
-let username = m.sender;
-let logic = "frase inspiradora"; 
-let result;
+        let query = 'Dime una frase inspiradora o motivacional.';
+        let username = m.sender;
+        let logic = "frase inspiradora"; 
+        let result;
 
-try {
-result = await luminsesi(query, username, logic);
-if (!result || result.trim() === "") throw new Error("Respuesta vacía");
-} catch (error) {
-result = pickRandom(global.frases); 
-}
+        try {
+            result = await luminsesi(query, username, logic);
+            if (!result || result.trim() === "") throw new Error("Respuesta vacía");
+        } catch (error) {
+            result = pickRandom(global.frases); 
+        }
 
-await conn.sendMessage(CANAL_ID, { text: `✨ ${result} ✨`,
-contextInfo:{
-forwardingScore: 9999999,
-isForwarded: false, 
-"externalAdReply": {
-"showAdAttribution": true,
-"containsAutoReply": true,
-title: "💬 Frase del día", 
-body: "✨ Inspiración para hoy 🌟",
-"previewType": "PHOTO",
-thumbnailUrl: "https://qu.ax/nWgle.jpg", 
-sourceUrl: [canal1, canal2, yt2].getRandom()}}}, { quoted: null})
-}
+        await conn.sendMessage(m.chat, { text: `✨ ${result} ✨`,
+            contextInfo:{
+                forwardingScore: 9999999,
+                isForwarded: false, 
+                "externalAdReply": {
+                    "showAdAttribution": true,
+                    "containsAutoReply": true,
+                    title: "💬 Frase del día", 
+                    body: "✨ Inspiración para hoy 🌟",
+                    "previewType": "PHOTO",
+                    thumbnailUrl: "https://qu.ax/nWgle.jpg", 
+                    sourceUrl: pickRandom([canal1, canal2, yt2])}}}, { quoted: null})
+    }
 };
+
 handler.help = ['random']; 
 handler.tags = ['random'];
 handler.command = /^(test40)$/i; 
@@ -73,7 +75,8 @@ handler.command = /^(test40)$/i;
 export default handler;
 
 function pickRandom(list) {
-return list[Math.floor(list.length * Math.random())]}
+    return list[Math.floor(Math.random() * list.length)];
+}
 
 async function luminsesi(q, username, logic) {
     try {
