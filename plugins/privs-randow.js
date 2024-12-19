@@ -3,8 +3,8 @@ import axios from 'axios';
 
 let handler = async (m, {command, conn}) => {
 let CANAL_ID = "120363374372683775@newsletter";
-const fake_piropo = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "❤️ Piropo del día", body: "🌹 ¡Algo bonito para alegrar tu día! 💕", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: pp, sourceUrl: [canal1, canal2, yt2].getRandom()}}}
-const fake_frases = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "💬 Frase del día", body: "✨ ¡Descubre la inspiración que tenemos para ti hoy! 🌟", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: pp, sourceUrl: [canal1, canal2, yt2].getRandom()}}}
+const fake_piropo = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "❤️ Piropo del día", body: "🌹 ¡Algo bonito para alegrar tu día! 💕", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: ImgRandom, sourceUrl: [canal1, canal2, yt2].getRandom()}}}
+const fake_frases = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "💬 Frase del día", body: "✨ ¡Descubre la inspiración que tenemos para ti hoy! 🌟", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: ImgRandom, sourceUrl: [canal1, canal2, yt2].getRandom()}}}
 
 const url = await hispamemes.meme();
 
