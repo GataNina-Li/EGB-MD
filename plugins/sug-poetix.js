@@ -297,7 +297,7 @@ break
 let options = { contextInfo: { externalAdReply: {
 title: title, body: body,
 thumbnailUrl: pp, 
-sourceUrl: accountsgb,
+sourceUrl: yt,
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
