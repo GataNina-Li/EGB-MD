@@ -16,14 +16,15 @@ let user = global.db.data.users[m.sender]
 let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 let menu = `
 ∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴∴
-*◈ ${user.registered === true ? user.name : `👉 ${usedPrefix}${lenguajeGB.lenguaje() == 'es' ? 'verificar nombre.edad' : 'verify name.age'}`} ◈*
 @${m.sender.split("@")[0]}*
 ๑°°°°۞°°°°°°°°۞°°°°°°°°۞°°°°๑
 
+:･ﾟ✵ :･ﾟ✧ :･ﾟ✵ *:･ﾟ✧:･ﾟ✵ :･ﾟ✧:･ﾟ
 ┌──── ∘°Ξ°∘ ────┐
 │ *Únete a nuestro canal de Telegram*
 │ t.me/globalgb
 └──── °∘Ξ∘° ────┘
+:･ﾟ✵ :･ﾟ✧ :･ﾟ✵ *:･ﾟ✧:･ﾟ✵ :･ﾟ✧:･ﾟ
 
 > Descubre más sobre este bot
 \`${usedPrefix}suginfo\`
@@ -69,7 +70,7 @@ ${WC.gatabot.link}
 \`${usedPrefix}donar\`
 _Recompesas para quienes donen, reclama tú recompensa a los creadores_
 
-❪✧❫━━━━━━━━━━━━━━━━❪✧❫
+❪✧❫━━━━━━━━━━━━━━❪✧❫
 
 *🤗 ¿Te gustaría colaborar con nosotros?*
 _Contacta con los creadores_
