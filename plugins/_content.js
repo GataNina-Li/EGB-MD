@@ -8,6 +8,11 @@ let handler = m => m
 handler.before = async function (m, { conn } ) {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? this.user.jid : m.sender
 let pp = await this.profilePictureUrl(who, 'image').catch(_ => img5)
+global.ImgRandom = [img, img2, img3, img4, img5].getRandom()
+global.imagenRandom = [imagen1, imagen2, imagen3].getRandom()
+global.gataMenu = [img, img2, img3]
+global.accounts = [canal1, canal2, canal3, canal4, canal5, tk, ig, yt, paypal, fb, ths, md, asistencia, tg].getRandom()
+  
 global.channelRD = await getRandomChannel()
   
 global.fake = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "😂😂😂", body: "INFINITY-WA 💫", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: pp, sourceUrl: [canal1, yt].getRandom()}}}  
