@@ -35,10 +35,18 @@ const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC
      
 let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
-let users = global.db.data.users[m.sender]
-     
-let waitTime = getWaitTime(users.reputation) // Obtiene el tiempo de espera según la reputación del usuario
-let time = users.suggetimme + waitTime
+if (!global.db.data.users[m.sender]) {
+  global.db.data.users[m.sender] = {
+    reputation: 0,
+    suggetimme: 0
+  };
+}
+
+let users = global.db.data.users[m.sender];
+
+let waitTime = getWaitTime(users?.reputation || 0);
+let time = (users?.suggetimme || 0) + waitTime;
+
 if (new Date() - users.suggetimme < waitTime) {
 return m.reply(`⚠️ *Ya has enviado una publicación.*\n\nPor favor, espera ${msToTime(time - new Date())} antes de enviar otra publicación.\n\nSi deseas reducir o eliminar el tiempo de espera, puedes mejorar tu reputación usando el comando *${usedPrefix}reputacion* ¡Tu reputación influye en tu tiempo de espera!\n\n${LEYENDA}`)
 }
