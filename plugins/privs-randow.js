@@ -3,13 +3,12 @@ import axios from 'axios';
 
 let handler = async (m, {command, conn}) => {
 let CANAL_ID = "120363374372683775@newsletter";
-const fake_piropo = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "❤️ Piropo del día", body: "🌹 ¡Algo bonito para alegrar tu día! 💕", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: ImgRandom, sourceUrl: [canal1, canal2, yt2].getRandom()}}}
-const fake_frases = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "💬 Frase del día", body: "✨ ¡Descubre la inspiración que tenemos para ti hoy! 🌟", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: ImgRandom, sourceUrl: [canal1, canal2, yt2].getRandom()}}}
+const fake5 = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "❤️ Piropo del día", body: "🌹 ¡Algo bonito para alegrar tu día! 💕", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: [canal1, canal2, yt2].getRandom()}}}
+const fake6 = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "💬 Frase del día", body: "✨ ¡Descubre la inspiración que tenemos para ti hoy! 🌟", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: [canal1, canal2, yt2].getRandom()}}}
 
 const url = await hispamemes.meme();
-
-    let or = ['memes', 'piropo', 'frases'];
-    let media = or[Math.floor(Math.random() * 3)];
+let or = ['memes', 'piropo', 'frases'];
+let media = or[Math.floor(Math.random() * 3)];
 
 if (media === 'memes') {
 await conn.sendFile(CANAL_ID, url, 'error.jpg', '', m, null, fake);
@@ -28,8 +27,8 @@ if (media === 'piropo') {
             result = pickRandom(global.piropo); 
         }
 
-await conn.reply(CANAL_ID, `${result}`, m, null, fake_piropo);
-    }
+await conn.reply(CANAL_ID, `${result}`, m, null, fake5);
+}
 
     if (media === 'frases') {
         let query = 'Dime una frase inspiradora o motivacional.';
@@ -44,7 +43,7 @@ await conn.reply(CANAL_ID, `${result}`, m, null, fake_piropo);
             result = pickRandom(global.frases); 
         }
 
-        await conn.reply(CANAL_ID, `✨ ${result} ✨`, m, null, fake_frases);
+        await conn.reply(CANAL_ID, `✨ ${result} ✨`, m, null, fake6);
     }
 };
 
