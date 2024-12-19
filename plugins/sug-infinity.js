@@ -219,23 +219,25 @@ break
 
 case 'música':
 case 'eventos':
-title = `【 🎵 ¡Nuevo evento o música! 🎵 】`
-body = `🎤 ¡Un usuario ha sugerido música o eventos interesantes! 🎤`
+title = `【 🎵 ¡Nuevo ${category.charAt(0).toUpperCase() + category.slice(1)}! 🎵 】`
+body = `¡Un usuario ha sugerido un eventos interesantes!`
 break
 
 case 'películas':
 case 'juegos':
 title = `【 🎬 ¡Nueva sugerencia de entretenimiento! 🎮 】`
-body = `🎥 ¡Un usuario compartió ideas sobre películas o juegos! 🎮`
+body = `🎥 ¡Un usuario compartió ideas sobre ${category.charAt(0).toUpperCase() + category.slice(1)}! 🎮`
 break
 
 case 'humor':
 case 'meme':
-title = `【 😜 ¡Nueva broma o chiste! 😂 】`
+case 'broma':
+title = `【 😜 ¡Nueva ${category.charAt(0).toUpperCase() + category.slice(1)}! 😂 】`
 body = `🤣 ¡Un usuario compartió algo divertido! ¡Échale un vistazo! 🤣`
 break
 
 case 'frases':
+case 'frase':
 title = `【 ✍️ ¡Nueva frase inspiradora! 】`
 body = `💬 Un usuario compartió una frase interesante. ¡No te la pierdas!`
 break
@@ -243,8 +245,8 @@ break
 case 'tecnología':
 case 'diseño':
 case 'desarrollo de software':
-title = `【 💻 ¡Nuevo aporte en tecnología o diseño! 💻 】`
-body = `💡 ¡Un usuario envió una idea sobre tecnología o diseño! 💡`
+title = `【 💻 ¡Nuevo aporte en ${category.charAt(0).toUpperCase() + category.slice(1)}! 💻 】`
+body = `💡 ¡Un usuario envió una idea sobre ${category.charAt(0).toUpperCase() + category.slice(1)}! 💡`
 break
 
 case 'soporte técnico':
