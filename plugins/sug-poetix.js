@@ -27,10 +27,10 @@ const reputationTimes = [
 ]
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-const ADMIN_GROUP_ID = "120363317570465699@g.us"  
+const ADMIN_ID = "120363317570465699@g.us"  
 const CANAL_ID = global.WC.poetix.id
 const CANAL_LINK = global.WC.poetix.link
-const LEYENDA = `> Este proceso es para enviar tú contenido al canal *${global.WC.infinity.name}*\nSi deseas enviar tu contenido a otro canal usa el comando *#menu*`
+const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC.poetix.name}*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
      
 let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
@@ -98,7 +98,7 @@ Puedes realizar una nueva solicitud sin recibir sanción. Sin embargo, si el con
 > \`Tiempo estimado de la revisión de 5 min hasta 10 horas. Sea paciente por favor.\`\n\n${LEYENDA}`)
 
 
-let groupMetadata = await conn.groupMetadata(ADMIN_GROUP_ID)
+let groupMetadata = await conn.groupMetadata(ADMIN_ID)
 let groupAdmins = groupMetadata.participants.filter(p => p.admin)
 
 if (!groupAdmins || groupAdmins.length === 0) {
@@ -128,17 +128,17 @@ _"no ${suggestionId} Tu contenido contiene [motivo específico], por favor corri
 
 if (url) {
 if (/image/.test(mime)) {
-await conn.sendMessage(ADMIN_GROUP_ID, { image: { url }, caption: confirmMessage, contextInfo:{ mentionedJid:[m.sender]}}, { quoted: m })
+await conn.sendMessage(ADMIN_ID, { image: { url }, caption: confirmMessage, contextInfo:{ mentionedJid:[m.sender]}}, { quoted: m })
 } else if (/video/.test(mime)) {
-await conn.sendMessage(ADMIN_GROUP_ID, { video: { url }, caption: confirmMessage, contextInfo:{ mentionedJid:[m.sender]}}, { quoted: m })        
+await conn.sendMessage(ADMIN_ID, { video: { url }, caption: confirmMessage, contextInfo:{ mentionedJid:[m.sender]}}, { quoted: m })        
 }} else {
-await conn.sendMessage(ADMIN_GROUP_ID, {text: confirmMessage, mentions: [m.sender]}, {quoted: m })
+await conn.sendMessage(ADMIN_ID, {text: confirmMessage, mentions: [m.sender]}, {quoted: m })
 }}
 
 handler.before = async (response) => {
 if (!response.text || !response.text.match(/^(si|no)\s*(\d+)?/i)) return
 
-let groupMetadata = await conn.groupMetadata(ADMIN_GROUP_ID)
+let groupMetadata = await conn.groupMetadata(ADMIN_ID)
 let groupAdmins = groupMetadata.participants.filter(p => p.admin)
 const isAdmin = groupAdmins.some(admin => admin.id === response.sender)
 if (!isAdmin) return
@@ -163,7 +163,7 @@ users.reputation -= 1
 } else {
 users.reputation = 0
 }
-await conn.sendMessage(ADMIN_GROUP_ID, { react: { text: "❌", key: response.key } })
+await conn.sendMessage(ADMIN_ID, { react: { text: "❌", key: response.key } })
 await conn.reply(sender, `⚠️ *Tu contenido ha sido rechazada por los administradores.*\n\n📌 *Motivo del rechazo:* ${reason_motivo}\n\n_Si el motivo no es claro, te invitamos a enviar un nuevo mensaje o contenido_`, null, { mentions: [sender] })
 delete suggestionQueue[suggestionId]
 return
@@ -171,7 +171,7 @@ return
 
 if (action === 'si') {
 users.reputation += 1
-await conn.sendMessage(ADMIN_GROUP_ID, { react: { text: "✅", key: response.key } })
+await conn.sendMessage(ADMIN_ID, { react: { text: "✅", key: response.key } })
 let approvedText = `👤 *Usuario:* ${senderName || 'Anónimo'}\n📝 *${category.charAt(0).toUpperCase() + category.slice(1)}:* ${suggestionText || 'Sin descripción'}`
 let title, body
 
