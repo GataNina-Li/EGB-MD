@@ -28,17 +28,14 @@ const reputationTimes = [
 
 
 const ADMIN_ID = "120363317570465699@g.us"  
-
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-//const ADMIN_ID = "120363317570465699@g.us"  
 const CANAL_ID = global.WC.poetix.id
 const CANAL_LINK = global.WC.poetix.link
 const LEYENDA = `Este proceso es para enviar tú contenido al canal *${global.WC.poetix.name}*\n> Si deseas enviar tu contenido a otro canal usa el comando *#menu*`
      
-let who = m.mentionedJid && m.mentionedJid.length > 0 ? m.mentionedJid[0] : (m.fromMe ? conn.user.jid : m.sender)
-let pp = await conn.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
 let users = global.db.data.users[m.sender]
-     
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+//const ADMIN_ID = "120363317570465699@g.us"  
 let waitTime = getWaitTime(users.reputation) // Obtiene el tiempo de espera según la reputación del usuario
 let time = users.suggetimme + waitTime
 if (new Date() - users.suggetimme < waitTime) {
