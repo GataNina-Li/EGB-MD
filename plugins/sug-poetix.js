@@ -146,15 +146,6 @@ await conn.sendMessage(ADMIN_ID, {text: confirmMessage, mentions: [m.sender]}, {
 handler.before = async (response) => {
 if (!response.text || !response.text.match(/^(si|no)\s*(\d+)?/i)) return
 
-if (!global.db.data.users[m.sender]) {
-  global.db.data.users[m.sender] = {
-    reputation: 0,
-    suggetimme: 0
-  };
-}
-
-let users = global.db.data.users[m.sender];
-
 let groupMetadata = await conn.groupMetadata(ADMIN_ID)
 let groupAdmins = groupMetadata.participants.filter(p => p.admin)
 const isAdmin = groupAdmins.some(admin => admin.id === response.sender)
@@ -174,6 +165,9 @@ return
 }
 
 const { suggestionText, category, sender, senderName, pp, url, mime } = suggestionQueue[suggestionId]
+
+let users = global.db.data.users[response.sender];
+
 if (action === 'no') {
 if (users.reputation > 0) {
 users.reputation -= 1
