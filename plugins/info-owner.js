@@ -65,6 +65,8 @@ contact.sky || contact.github, // Dependiendo del campo disponible
 contact.bio
 ])
 await conn.sendContactArray(m.chat, contactArray, m)
+console.log(contactArray)
+ 
 } catch (error) {
 console.error(error)
 m.reply('Hubo un error al intentar enviar los contactos.')
