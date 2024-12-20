@@ -3,70 +3,101 @@ import axios from 'axios';
 
 let handler = m => m;
 
-setInterval(async (m) => {
+setInterval(async () => {
 let CANAL_ID = "120363374372683775@newsletter";
-const fake2 = { contextInfo: { externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: pickRandom([canal1, yt2, dash]), mediaType: 1, showAdAttribution: false,renderLargerThumbnail: false }}}
-      
-let or = ['memes', 'piropo', 'frases'];
-let media = pickRandom(or);
-//let media = or[Math.floor(Math.random() * 3)]
+  const fake2 = {
+    contextInfo: {
+      externalAdReply: {
+        title: "😂 Meme 😂",
+        body: "¡Disfruta de un buen meme! 🎉",
+        thumbnailUrl: "https://qu.ax/nWgle.jpg",
+        sourceUrl: pickRandom([canal1, yt2, dash]),
+        mediaType: 1,
+        showAdAttribution: false,
+        renderLargerThumbnail: false
+      }
+    }
+  };
+
+  let or = ['memes', 'piropo', 'frases'];
+  let media = pickRandom(or);
 
   if (media === 'memes') {
-    const url = await hispamemes.meme();
-    await conn.sendFile(CANAL_ID, url, 'error.jpg', '', m, null, fake2);
-}
+    try {
+      const url = await hispamemes.meme();
+      await conn.sendFile(CANAL_ID, url, 'error.jpg', '', null, null, fake2);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
-if (media === 'piropo') {
+  if (media === 'piropo') {
     let query = 'Cuéntame un piropo, solo di el piropo no agregues más texto.';
-   let username = "";
-   let logic = "piropo"; 
-   let result;
+    let logic = "piropo";
+    let result = await getBackupResult(query, logic, global.piropo);
 
-    try {
-      result = await luminsesi(query, username, logic);
-      if (!result || result.trim() === "") throw new Error("Respuesta vacía");
-    } catch (error) {
-      result = pickRandom(global.piropo);
-    }
+    await conn.sendMessage(CANAL_ID, { 
+      text: `${result}`, 
+      contextInfo: {
+        externalAdReply: {
+          title: "❤️ Piropo",
+          body: "🌹 Una palabra bonita para ti 💕",
+          thumbnailUrl: "https://qu.ax/nWgle.jpg",
+          sourceUrl: pickRandom([canal1, canal2, yt2, dash]),
+          mediaType: 1,
+          showAdAttribution: false,
+          renderLargerThumbnail: false
+        }
+      }
+    });
+  }
 
-    await conn.sendMessage(CANAL_ID, { text: `${result}`, contextInfo: { externalAdReply: {
-title: "❤️ Piropo", 
-body: "🌹 Una palabra bonita para ti 💕",
-thumbnailUrl: "https://qu.ax/nWgle.jpg", 
-sourceUrl: pickRandom([canal1, canal2, yt2, dash]), 
-mediaType: 1,
-showAdAttribution: false,
-renderLargerThumbnail: false
-}}}, { quoted: null})    
-}
-
-if (media === 'frases') {
+  if (media === 'frases') {
     let query = 'Dime una frase inspiradora o motivacional.';
-let username = "";
-let logic = "frase inspiradora"; 
-let result;
+    let logic = "frase inspiradora";
+    let result = await getBackupResult(query, logic, global.frases);
 
-    try {
-      result = await luminsesi(query, username, logic);
-      if (!result || result.trim() === "") throw new Error("Respuesta vacía");
-    } catch (error) {
-      result = pickRandom(global.frases);
-    }
-
-    await conn.sendMessage(CANAL_ID, { text: `✨ ${result} ✨`, contextInfo: { externalAdReply: {
-title: "💬 Frase del día", 
-body: "✨ Inspiración para hoy 🌟",
-thumbnailUrl: "https://qu.ax/nWgle.jpg", 
-sourceUrl: pickRandom([canal1, canal2, yt2, dash]), 
-mediaType: 1,
-showAdAttribution: false,
-renderLargerThumbnail: false
-}}}, { quoted: null})
-}}, 5 * 60 * 1000); 
+    await conn.sendMessage(CANAL_ID, {
+      text: `✨ ${result} ✨`,
+      contextInfo: {
+        externalAdReply: {
+          title: "💬 Frase del día",
+          body: "✨ Inspiración para hoy 🌟",
+          thumbnailUrl: "https://qu.ax/nWgle.jpg",
+          sourceUrl: pickRandom([canal1, canal2, yt2, dash]),
+          mediaType: 1,
+          showAdAttribution: false,
+          renderLargerThumbnail: false
+        }
+      }
+    });
+  }
+}, 5 * 60 * 1000); // Ejecutar cada 5 minutos
 //6 * 60 * 60 * 1000); //6hs
 
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)];
+}
+
+async function getBackupResult(query, logic, fallback) {
+  let result = null;
+
+  try {
+    result = await luminsesi(query, "", logic);
+    if (!result || result.trim() === "") throw new Error("Respuesta vacía de LuminSesi");
+  } catch (error) {
+    console.error('LuminSesi fallo:', error);
+
+    try {
+      result = await geminiProApi(query, logic);
+      if (!result || result.trim() === "") throw new Error("Respuesta vacía de Gemini Pro");
+    } catch (error) {
+      console.error('Gemini Pro fallo:', error);
+      result = pickRandom(fallback); // Usar respaldo predefinido
+    }
+  }
+
+  return result;
 }
 
 async function luminsesi(q, username, logic) {
@@ -75,7 +106,7 @@ async function luminsesi(q, username, logic) {
       content: q,
       user: username,
       prompt: logic,
-      webSearchMode: true // true = resultado con URL
+      webSearchMode: true
     });
     return response.data.result;
   } catch (error) {
@@ -84,6 +115,18 @@ async function luminsesi(q, username, logic) {
   }
 }
 
+async function geminiProApi(q, logic) {
+  try {
+    const response = await fetch(`https://api.ryzendesu.vip/api/ai/gemini-pro?text=${encodeURIComponent(q)}&prompt=${encodeURIComponent(logic)}`);
+    if (!response.ok) throw new Error(`Error en la solicitud: ${response.statusText}`);
+    const result = await response.json();
+    return result.answer;
+  } catch (error) {
+    console.error('Error en Gemini Pro:', error);
+    return null;
+  }
+}
+        
 global.piropo = ["Me gustaría ser papel para poder envolver ese bombón.", "Eres como wifi sin contraseña, todo el mundo te busca", "Quién fuera bus para andar por las curvas de tu corazón.", "Quiero volar sin alas y salir de este universo, entrar en el tuyo y amarte en silencio.", "Quisiera ser mantequilla para derretirme en tu arepa.", "Si la belleza fuera pecado vos ya estarías en el infierno.", "Me Gustaría Ser Un Gato Para Pasar 7 Vidas A Tu Lado.", "Robar Está Mal Pero Un Beso De Tu Boca Sí Me Lo Robaría.", "Qué Hermoso Es El Cielo Cuando Está Claro Pero Más Hermoso Es El Amor Cuando Te Tengo A Mi Lado.", "Bonita, Camina Por La Sombra, El Sol Derrite Los Chocolates.", "Si Fuera Un Correo Electrónico Serías Mi Contraseña.", "Quisiera que fueses monte para darte machete", "Perdí mi número de teléfono ¿Me das el tuyo?", "¿Cómo te llamas para pedirte de regalo a Santa Claus?", " En el cielo hay muchas estrellas, pero la más brillante está en la Tierra y eres tú.", "¿Acaba de salir el sol o es la sonrisa que me regalas hoy?", "No es el ron ni la cerveza, eres tú quien se me ha subido a la cabeza", "Si hablamos de matemáticas eres la suma de todos mis deseos.", "Pareces Google porque tienes todo lo que yo busco.", "Mi café favorito, es el de tus ojos.", "Quiero ser photoshop para retocarte todo el cuerpo.", "Quisiera que fueras cereal, para cucharearte en las mañanas.", "Quien fuera hambre, para darte tres veces al día."]
 
 global.frases = [
