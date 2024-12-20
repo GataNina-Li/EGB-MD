@@ -5,7 +5,7 @@ import PhoneNumber from 'awesome-phonenumber'
 let handler = async (m, { conn, usedPrefix, text, args, command }) => {
 
 const pais = await getNationalities(official)
-const biografia = await getBiographies(official)
+const biografia = await getBiographies(official, conn)
 
 const contacts = [
 {
@@ -14,7 +14,7 @@ name: await conn.getName(official[0][0] + '@s.whatsapp.net'),
 title: 'Gata Dios',
 desc: 'Respondo cuando pueda...',
 email: "centergatabot@gmail.com",
-country: `${pais.number1.emoji} ${pais.number1.country}`,
+country: pais.number1 ? `${pais.number1.emoji} ${pais.number1.country}` : 'Desconocido',
 github: 'https://github.com/GataNina-Li',
 bio: biografia.number1
 },
@@ -24,7 +24,7 @@ name: await conn.getName(official[1][0] + '@s.whatsapp.net'),
 title: 'Mario',
 desc: '📵 No Hacer Spam',
 email: null,
-country: `${pais.number2.emoji} ${pais.number2.country}`,
+country: pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido',
 sky: 'https://dash.skyultraplus.com',
 bio: biografia.number2
 }
@@ -76,7 +76,7 @@ let finalResults = Object.assign({}, ...results)
 return finalResults
 }
 
-async function getBiographies(numbers) {
+async function getBiographies(numbers, conn) {
 const biographies = {}
 
 for (const [index, [number, name]] of numbers.entries()) {
