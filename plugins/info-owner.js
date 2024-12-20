@@ -1,29 +1,3 @@
-/*import fetch from 'node-fetch'
-
-var handler = async (m, { conn, usedPrefix, text, args, command }) => {
-
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who).catch(_ => '')
-let name = await conn.getName(who)
-let biografia = await conn.fetchStatus('5217294888993' +'@s.whatsapp.net').catch(_ => 'Sin Biografía')
-let biografiaBot = await conn.fetchStatus('5214531287294' +'@s.whatsapp.net').catch(_ => 'Sin Biografía')
-let bio = biografia.status?.toString() || 'Sin Biografía'
-let biobot = biografiaBot.status?.toString() || 'Sin Biografía'
-
-await conn.sendContactArray(m.chat, [
-['5214434703586', `${await conn.getName('5214434703586'+'@s.whatsapp.net')}`, `🍭 Creador`, 'ggg', 'gggg', `🇲🇽 México`, `https://www.youtube.com/@Azami_YT`, bio],
-[`${conn.user.jid.split('@')[0]}`, `${await conn.getName(conn.user.jid)}`, `🍧 CuriosityBot-MD`, `📵 No Hacer Spam`, 'ffffff', `🇲🇽 México`, `https://github.com/AzamiJs/CuriosityBot-MD`, biobot]
-], m)
-  
-}
-handler.help = ['owner', 'contacto', 'creador', 'contactos']
-handler.tags = ['info']
-handler.command = /^(owner|contacto|creador|contactos)/i
-
-//handler.register = true
-
-export default handler*/
-
 import fetch from 'node-fetch'
 import axios from 'axios'
 import PhoneNumber from 'awesome-phonenumber'
@@ -37,7 +11,7 @@ console.log(pais)
 const biografia = await getBiographies(official, conn)
 console.log(biografia)
 
-await conn.sendContactArray(m.chat, [
+/*await conn.sendContactArray(m.chat, [
 [official[0][0], 
 await conn.getName(official[0][0] + '@s.whatsapp.net'), 
 'Gata Dios', 
@@ -55,9 +29,9 @@ null,
 pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido', 
 'https://dash.skyultraplus.com', 
 biografia.number2]
-], m)
+], m)*/
 
-/*const contacts = [
+const contacts = [
 {
 number: official[0][0],
 name: await conn.getName(official[0][0] + '@s.whatsapp.net'),
@@ -90,63 +64,13 @@ contact.country,
 contact.sky || contact.github, // Dependiendo del campo disponible
 contact.bio
 ])
-await conn.sendContactArray(m.chat, contactArray, m)*/
+await conn.sendContactArray(m.chat, contactArray, m)
 } catch (error) {
 console.error(error)
 m.reply('Hubo un error al intentar enviar los contactos.')
 }}
 handler.command = /^(owner|contacto|creador|contactos|creadora|creadores)/i
 export default handler
-
-/*async function getNationalities(numbers) {
-let requests = numbers.map((entry, index) => {
-let phone = PhoneNumber(entry[0])
-return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phone.getNumber('international')}`)
-.then(api => {
-let userNationalityData = api.data.result;
-let userNationality = userNationalityData ? {
-country: userNationalityData.name,
-emoji: userNationalityData.emoji
-} : { country: 'Desconocido', emoji: '' }
-
-return {
-[`number${index + 1}`]: {
-country: userNationality.country,
-emoji: userNationality.emoji
-}}
-}).catch(() => {
-// Manejo de errores si la API falla
-return {
-[`number${index + 1}`]: {
-country: 'Desconocido',
-emoji: ''
-}
-}})
-})
-let results = await Promise.all(requests)
-let finalResults = Object.assign({}, ...results)
-return finalResults
-}
-
-async function getBiographies(numbers, conn) {
-const biographies = {}
-
-for (const [index, [number, name]] of numbers.entries()) {
-try {
-const user = number
-const biografia = await conn.fetchStatus(user).catch(() => null)
-let bio = "Ninguna"
-
-if (biografia && biografia[0] && biografia[0].status !== null) {
-bio = biografia[0].status || "Sin definir"
-}
-biographies[`number${index + 1}`] = bio
-} catch (error) {
-biographies[`number${index + 1}`] = "Sin definir"
-}}
-return biographies
-}
-*/
 
 async function getNationalities(numbers) {
   let requests = numbers.map((entry, index) => {
@@ -186,82 +110,30 @@ async function getNationalities(numbers) {
   return finalResults;
 }
 
-/*async function getBiographies(numbers, conn) {
-  const biographies = {};
 
-  
-  let requests = numbers.map(async ([number]) => {
-    try {
-      const biografia = await conn.fetchStatus(number).catch(() => null);
-      let bio = "Ninguna";
-      if (biografia && biografia[0] && biografia[0].status !== null) {
-        bio = biografia[0].status || "Sin definir";
-      }
-      return bio;
-    } catch (error) {
-      return "Sin definir";
-    }
-  });
-
- 
-  let results = await Promise.all(requests);
-  
-  
-  results.forEach((bio, index) => {
-    biographies[`number${index + 1}`] = bio;
-  });
-
-  return biographies;
-}
-*/
 
 async function getBiographies(numbers, conn) {
   const biographies = {};
 
-  console.log("Iniciando la obtención de biografías para los números:", numbers);
-
-  // Creamos las promesas para obtener biografía para cada número
   let requests = numbers.map(async ([number], index) => {
-    const formattedNumber = `${number}@s.whatsapp.net`; // Formatear el número
+    const formattedNumber = `${number}@s.whatsapp.net`;
     try {
-      console.log(`Intentando obtener biografía para el número: ${formattedNumber}`);
-
-      // Llamada a la API de conn con el número formateado
-      const biografia = await conn.fetchStatus(formattedNumber).catch((error) => {
-        console.error(`Error al intentar obtener la biografía para el número ${formattedNumber} (catch interno):`, error);
-        return null;
-      });
-
-      // Evaluamos si se obtuvo un resultado válido
+      const biografia = await conn.fetchStatus(formattedNumber).catch(() => null);
       if (biografia && biografia[0] && biografia[0].status !== null) {
-        console.log(`Biografía encontrada para el número ${formattedNumber}:`, biografia[0].status);
         return { [`number${index + 1}`]: biografia[0].status };
       } else {
-        console.warn(`No se encontró biografía para el número ${formattedNumber}.`);
-        return { [`number${index + 1}`]: "Ninguna" };
+        return { [`number${index + 1}`]: "Sin descripción" };
       }
-    } catch (error) {
-      // Capturamos cualquier error inesperado
-      console.error(`Error inesperado al obtener la biografía para el número ${formattedNumber}:`, error);
+    } catch {
       return { [`number${index + 1}`]: "Sin definir" };
     }
   });
 
-  // Esperamos que todas las promesas se resuelvan
-  let results;
-  try {
-    results = await Promise.all(requests);
-    console.log("Resultados obtenidos de las promesas:", results);
-  } catch (error) {
-    console.error("Error crítico al resolver las promesas:", error);
-    throw error; // Re-lanzamos el error si queremos manejarlo más arriba
-  }
+  let results = await Promise.all(requests);
 
-  // Combinamos los resultados de todas las promesas en un único objeto
   results.forEach(result => {
     Object.assign(biographies, result);
   });
 
-  console.log("Biografías finales:", biographies);
   return biographies;
 }
