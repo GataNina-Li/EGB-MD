@@ -26,6 +26,7 @@ global.mods = []
 
 // Cambiar a false para usar el Bot desde el mismo numero del Bot.
 global.isBaileysFail = true
+global.baileys = '@whiskeysockets/baileys'
 
 // ❰❰ methodCode ❱❱
 // [ES] > Agregue el número del Bot en "botNumberCode" si desea recibir código de 8 dígitos sin registrar el número en la consola.
