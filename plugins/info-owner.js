@@ -154,7 +154,7 @@ async function getNationalities(numbers) {
     const phoneNumber = phone.getNumber('international');
     console.log(phoneNumber)
 
-    return await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phoneNumber}`)
+    return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phoneNumber}`)
       .then(api => {
         let userNationalityData = api.data.result;
         let userNationality = userNationalityData ? {
