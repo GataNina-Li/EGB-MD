@@ -3,7 +3,7 @@ import axios from 'axios'
 import PhoneNumber from 'awesome-phonenumber'
 
 let handler = async (m, { conn, usedPrefix, text, args, command }) => {
-
+console.log('w')
 const pais = await getNationalities(official)
 const biografia = await getBiographies(official, conn)
 
