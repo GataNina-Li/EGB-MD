@@ -71,8 +71,7 @@ mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
 }}}, { quoted: null})
-}}, 5 * 60 * 1000); 
-//6 * 60 * 60 * 1000); //6hs
+}}, 6 * 60 * 60 * 1000); //6hs
 
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)];
