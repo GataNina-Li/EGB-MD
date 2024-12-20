@@ -12,13 +12,11 @@ import { en, es, id, ar, pt, de, it } from './lib/idiomas/total-idiomas.js'
 // ES ➜ Si desea recibir reportes debe de usar los tres parámetros (Número, nombre y true)
 // EN ➜ Add the Bot number as priority first
 // EN ➜ If you want to receive reports you must use the three parameters (Number, name and true)
-global.owner = [
-['5214774444444', '𝙂𝙖𝙩𝙖𝘽𝙤𝙩𝙇𝙞𝙩𝙚-𝙈𝘿 🌻🐈', true], //𝙂𝙖𝙩𝙖𝘽𝙤𝙩𝙇𝙞𝙩𝙚-𝙈𝘿 🌻🐈
-['593968263524', '𝙂𝘽 𝘼𝙨𝙞𝙨𝙩𝙚𝙣𝙘𝙞𝙖 🌻🐈', true],
+global.owner = [ 
+['593968263524', 'Gata Dios', true],
 ['5492266613038'], 
 ['595976126756'],
-['593968585383'],
-['5218714429807']]
+['593968585383']]
 
 global.mods = [] 
 global.prems = []
@@ -27,6 +25,9 @@ global.mods = []
 // Cambiar a false para usar el Bot desde el mismo numero del Bot.
 global.isBaileysFail = true
 global.baileys = '@whiskeysockets/baileys'
+
+global.packname = '© Evolution Global Bots'
+global.author = 'Gata Dios'
 
 // ❰❰ methodCode ❱❱
 // [ES] > Agregue el número del Bot en "botNumberCode" si desea recibir código de 8 dígitos sin registrar el número en la consola.
@@ -46,18 +47,6 @@ global.lenguajeGB = es  //<-- Predeterminado en idioma Español
 global.official = [ 
 ['593968263524', 'Gata Dios 💻', 1], 
 ['5214774444444', '𝗗𝗲𝘀𝗮𝗿𝗿𝗼𝗹𝗹𝗮𝗱𝗼𝗿 𝗢𝗳𝗶𝗰𝗶𝗮𝗹 💻', 1]] 
-
-global.htki = '*⭑•̩̩͙⊱•••• ☪*'
-global.htka = '*☪ ••••̩̩͙⊰•⭑*'
-global.htjava = '⫹⫺'
-global.correct = '✅'
-global.fault = '💔'
-global.alert = '⚠️'
-global.sending = '📋'
-global.sent = '❇️'
-global.notsent = '❗'
-global.waitemot = '⌛'
-global.waitemot2 = '⏳'
 
 global.multiplier = 60 // Cuanto más alto, más difícil subir de nivel
 
