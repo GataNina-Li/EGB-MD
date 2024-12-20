@@ -14,8 +14,9 @@ let media = or[Math.floor(Math.random() * 3)]
   if (media === 'memes') {
     const url = await hispamemes.meme();
     await conn.sendFile(CANAL_ID, url, 'error.jpg', '', m, null, fake2);
-  
-  } else if (media === 'piropo') {
+}
+
+if (media === 'piropo') {
     let query = 'Cuéntame un piropo, solo di el piropo no agregues más texto.';
    let username = "";
    let logic = "piropo"; 
@@ -39,8 +40,9 @@ body: "🌹 Una palabra bonita para ti 💕",
 "previewType": "PHOTO",
 thumbnailUrl: "https://qu.ax/nWgle.jpg", 
 sourceUrl: pickRandom([canal1, canal2, yt2, dash])}}}, { quoted: null})
-  
-  } else if (media === 'frases') {
+}
+
+if (media === 'frases') {
     let query = 'Dime una frase inspiradora o motivacional.';
 let username = "";
 let logic = "frase inspiradora"; 
