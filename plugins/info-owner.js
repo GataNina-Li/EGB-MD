@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+/*import fetch from 'node-fetch'
 
 var handler = async (m, { conn, usedPrefix, text, args, command }) => {
 
@@ -22,9 +22,9 @@ handler.command = /^(owner|contacto|creador|contactos)/i
 
 //handler.register = true
 
-export default handler
+export default handler*/
 
-/*import fetch from 'node-fetch'
+import fetch from 'node-fetch'
 import axios from 'axios'
 import PhoneNumber from 'awesome-phonenumber'
 
@@ -123,4 +123,4 @@ biographies[`number${index + 1}`] = bio
 biographies[`number${index + 1}`] = "Sin definir"
 }}
 return biographies
-}*/
+}
