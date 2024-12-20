@@ -35,7 +35,27 @@ m.reply('*Espere un momento...*')
 const pais = await getNationalities(official)
 const biografia = await getBiographies(official, conn)
 
-const contacts = [
+await conn.sendContactArray(m.chat, [
+[official[0][0], 
+await conn.getName(official[0][0] + '@s.whatsapp.net'), 
+'Gata Dios', 
+'Respondo cuando pueda...', 
+"centergatabot@gmail.com", 
+pais.number1 ? `${pais.number1.emoji} ${pais.number1.country}` : 'Desconocido', 
+'https://github.com/GataNina-Li', 
+biografia.number1
+],
+[official[1][0], 
+await conn.getName(official[1][0] + '@s.whatsapp.net'), 
+'Mario',
+`📵 No Hacer Spam`, 
+null,
+pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido', 
+'https://dash.skyultraplus.com', 
+biografia.number2]
+], m)
+
+/*const contacts = [
 {
 number: official[0][0],
 name: await conn.getName(official[0][0] + '@s.whatsapp.net'),
@@ -68,7 +88,7 @@ contact.country,
 contact.sky || contact.github, // Dependiendo del campo disponible
 contact.bio
 ])
-await conn.sendContactArray(m.chat, contactArray, m)
+await conn.sendContactArray(m.chat, contactArray, m)*/
 } catch (error) {
 console.error(error)
 m.reply('Hubo un error al intentar enviar los contactos.')
