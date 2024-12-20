@@ -3,9 +3,7 @@ import axios from 'axios';
 
 let handler = m => m;
 
-export async function before(m, { conn }) {
-
-setInterval(async () => {
+setInterval(async (m) => {
   const fake2 = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: [canal1, yt].getRandom()}}}  
 let CANAL_ID = "120363374372683775@newsletter";
 
@@ -68,6 +66,7 @@ body: "✨ Inspiración para hoy 🌟",
 thumbnailUrl: "https://qu.ax/nWgle.jpg", 
 sourceUrl: pickRandom([canal1, canal2, yt2])}}}, { quoted: null})
 }}, 5 * 60 * 1000); //10hs
+}
 
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)];
@@ -168,6 +167,3 @@ global.frases = [
     "Si no te desafía, no te cambiará.",
     "Nunca dejes de soñar, solo de trabajar para ello."
 ];  
-  
-}
-export default handler
