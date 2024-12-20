@@ -19,6 +19,8 @@ let menu = `
 @${m.sender.split("@")[0]}
 ๑°°°°۞°°°°°°°°۞°°°°°°°°۞°°°°๑
 
+⚠️ _Algunos comandos pueden no funcionar, este bot es beta, puedes mandar sugerencias con el comando:_ \`${usedPrefix}solicitar\`
+
 :･ﾟ✵ :･ﾟ✧ :･ﾟ✵ *:･ﾟ✧:･ﾟ✵ :･ﾟ✧:･ﾟ
 ┌──── ∘°Ξ°∘ ────┐
 │ *Únete a nuestro canal de Telegram*
