@@ -23,10 +23,11 @@ bio: biografia.number1
 {
 number: official[1][0],
 name: await conn.getName(official[1][0] + '@s.whatsapp.net'),
-title: 'Mario',
+title: 'elrebelde21',
 desc: '📵 No Hacer Spam',
-email: 'No disponible',
+email: 'thelolibotm@gmail.com',
 country: pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido',
+github: 'https://github.com/elrebelde21', 
 sky: 'https://dash.skyultraplus.com',
 bio: biografia.number2
 }
