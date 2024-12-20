@@ -218,38 +218,51 @@ async function getNationalities(numbers) {
 async function getBiographies(numbers, conn) {
   const biographies = {};
 
-  
+  // Mensaje de inicio del proceso
+  console.log("Iniciando la obtención de biografías para los números:", numbers);
+
+  // Creamos las promesas de obtener biografía para cada número
   let requests = numbers.map(async ([number], index) => {
     try {
+      console.log(`Intentando obtener biografía para el número: ${number}`);
+
+      // Llamada a la API de conn
       const biografia = await conn.fetchStatus(number).catch((error) => {
-        console.error(`Error al intentar obtener la biografía para el número ${number}:`, error);
-        return null; // En caso de error, devolvemos null
+        console.error(`Error al intentar obtener la biografía para el número ${number} (catch interno):`, error);
+        return null;
       });
 
-     
-      let bio = "Ninguna"; 
-
+      // Evaluamos si se obtuvo un resultado válido
       if (biografia && biografia[0] && biografia[0].status !== null) {
-        bio = biografia[0].status || "Sin definir";
+        console.log(`Biografía encontrada para el número ${number}:`, biografia[0].status);
+        return { [`number${index + 1}`]: biografia[0].status };
+      } else {
+        console.warn(`No se encontró biografía para el número ${number}.`);
+        return { [`number${index + 1}`]: "Ninguna" };
       }
-
-      // Retornamos la biografía para este número
-      return { [`number${index + 1}`]: bio };
     } catch (error) {
-     
-      console.error(`Error al obtener biografía para el número ${number}:`, error);
+      // Capturamos cualquier error inesperado
+      console.error(`Error inesperado al obtener la biografía para el número ${number}:`, error);
       return { [`number${index + 1}`]: "Sin definir" };
     }
   });
 
   // Esperamos que todas las promesas se resuelvan
-  let results = await Promise.all(requests);
+  let results;
+  try {
+    results = await Promise.all(requests);
+    console.log("Resultados obtenidos de las promesas:", results);
+  } catch (error) {
+    console.error("Error crítico al resolver las promesas:", error);
+    throw error; // Re-lanzamos el error si queremos manejarlo más arriba
+  }
 
   // Combinamos los resultados de todas las promesas en un único objeto
   results.forEach(result => {
     Object.assign(biographies, result);
   });
 
+  console.log("Biografías finales:", biographies);
   return biographies;
 }
 
