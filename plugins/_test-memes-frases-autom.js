@@ -17,7 +17,7 @@ let media = or[Math.floor(Math.random() * 3)]
   
   } else if (media === 'piropo') {
     let query = 'Cuéntame un piropo, solo di el piropo no agregues más texto.';
-   let username = m.sender;
+   let username = "";
    let logic = "piropo"; 
    let result;
 
@@ -42,7 +42,7 @@ sourceUrl: pickRandom([canal1, canal2, yt2, dash])}}}, { quoted: null})
   
   } else if (media === 'frases') {
     let query = 'Dime una frase inspiradora o motivacional.';
-let username = m.sender;
+let username = "";
 let logic = "frase inspiradora"; 
 let result;
 
