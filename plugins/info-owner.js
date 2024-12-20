@@ -1,53 +1,96 @@
-import fetch from 'node-fetch';
+import fetch from 'node-fetch'
+import axios from 'axios'
+import { PhoneNumber } from 'libphonenumber-js'
 
 let handler = async (m, { conn, usedPrefix, text, args, command }) => {
-  const contacts = global.official.filter(([_, __, status]) => status === 1);
-  const lista = [];
-  
-  for (const contact of contacts) {
-    const [number, name, status] = contact;
-    const jid = `${number}@s.whatsapp.net`;
-    const displayName = await conn.getName(jid);
-    const biografia = await conn.fetchStatus(jid).catch(() => null);
-    const bio = biografia?.status || "Sin descripción";
-    lista.push({ number, name: displayName || name || "Desconocido", bio });
-  }
 
-  let cat = `💖🐈 𝘾𝙊𝙉𝙏𝘼𝘾𝙏𝙊 | 𝘾𝙊𝙉𝙏𝘼𝘾𝙏 💖🐈 
+const pais = await getNationalities(officialNumbers)
+const biografia = await getBiographies(officialNumbers)
 
-*---------------------*
+const contacts = [
+{
+number: official[0][0],
+name: await conn.getName(official[0][0] + '@s.whatsapp.net'),
+title: 'Gata Dios',
+desc: 'Respondo cuando pueda...',
+email: "centergatabot@gmail.com",
+country: `${pais.number1.emoji} ${pais.number1.country}`,
+github: 'https://github.com/GataNina-Li',
+bio: biografia.number1
+},
+{
+number: official[1][0],
+name: await conn.getName(official[1][0] + '@s.whatsapp.net'),
+title: 'Mario',
+desc: '📵 No Hacer Spam',
+email: null,
+country: `${pais.number2.emoji} ${pais.number2.country}`,
+sky: 'https://dash.skyultraplus.com',
+bio: biografia.number2
+}
+]
 
-*CENTER GATABOT*
-*centergatabot@gmail.com*
+const contactArray = contacts.map(contact => [
+contact.number,
+contact.name,
+contact.title,
+contact.desc,
+contact.email,
+contact.country,
+contact.sky || contact.github, // Dependiendo del campo disponible
+contact.bio
+])
+await conn.sendContactArray(m.chat, contactArray, m)
+ 
+}
+handler.command = /^(owner|contacto|creador|contactos|creadora|creadores)/i
+export default handler
 
-𝙂𝘼𝙏𝘼 𝘿𝙄𝙊𝙎 - 𝘼𝙎𝙄𝙎𝙏𝙀𝙉𝘾𝙄𝘼
-*${asistencia}*
+async function getNationalities(numbers) {
+let requests = numbers.map((entry, index) => {
+let phone = PhoneNumber(entry[0])
+return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phone.getNumber('international')}`)
+.then(api => {
+let userNationalityData = api.data.result;
+let userNationality = userNationalityData ? {
+country: userNationalityData.name,
+emoji: userNationalityData.emoji
+} : { country: 'Desconocido', emoji: '' }
 
-*---------------------*
+return {
+[`number${index + 1}`]: {
+country: userNationality.country,
+emoji: userNationality.emoji
+}}
+}).catch(() => {
+// Manejo de errores si la API falla
+return {
+[`number${index + 1}`]: {
+country: 'Desconocido',
+emoji: ''
+}
+}})
+})
+let results = await Promise.all(requests)
+let finalResults = Object.assign({}, ...results)
+return finalResults
+}
 
-ᵃ ᶜᵒⁿᵗᶦⁿᵘᵃᶜᶦᵒ́ⁿ ˢᵉ ᵉⁿᵛᶦᵃʳᵃⁿ ˡᵒˢ ᶜᵒⁿᵗᵃᶜᵗᵒˢ ᵈᵉ ᵐᶦ ᵖʳᵒᵖᶦᵉᵗᵃʳᶦᵒ / ᵈᵉˢᵃʳʳᵒˡˡᵃᵈᵒʳᵉˢ`
+async function getBiographies(numbers) {
+const biographies = {}
 
-  for (const item of lista) {
-    const { number, name, bio } = item;
-    cat += ``;
-  }
+for (const [index, [number, name]] of numbers.entries()) {
+try {
+const user = number
+const biografia = await conn.fetchStatus(user).catch(() => null)
+let bio = "Ninguna"
 
-await conn.sendMessage(m.chat, { text: cat, contextInfo: { forwardedNewsletterMessageInfo: { newsletterJid: canalIdGB, serverMessageId: canalNombreGB, newsletterName: wm }, forwardingScore: 9999999, isForwarded: true,    externalAdReply: { showAdAttribution: true,   renderLargerThumbnail: true, title: wm,   containsAutoReply: true, mediaType: 1,   thumbnail: imagenRandom, sourceUrl: accounts }}}, { quoted: fkontak });
-
-  for (const contact of lista) {
-    const { number, name, bio } = contact;
-    const vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nORG:${name}\nTITLE:\nTEL;waid=${number}:${number}\nX-ABLabel:${bio}\nEND:VCARD`;
-    await conn.sendMessage(m.chat, { 
-      contacts: { 
-        displayName: name, 
-        contacts: [{ vcard }] 
-      }
-    }, { quoted: m });
-  }
-};
-
-handler.help = ['owner', 'creator', 'creador', 'dueño', 'fgowner'];
-handler.tags = ['main'];
-handler.command = ['owner', 'creator', 'creador', 'dueño', 'fgowner'];
-
-export default handler;
+if (biografia && biografia[0] && biografia[0].status !== null) {
+bio = biografia[0].status || "Sin definir"
+}
+biographies[`number${index + 1}`] = bio
+} catch (error) {
+biographies[`number${index + 1}`] = "Sin definir"
+}}
+return biographies
+}
