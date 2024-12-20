@@ -130,7 +130,7 @@ return
 }
 
 let suggestionId = Math.floor(Math.random() * 901)
-suggestionQueue[suggestionId] = { suggestionText, category, sender: m.sender, senderName: m.pushName, pp, suggestionId, url, mime }
+suggestionQueue[suggestionId] = { suggestionText, category, sender: m.sender, senderName: m.pushName, pp, suggestionId, url, mime, usedPrefix }
 global.db.data.users[m.sender].suggetimme = new Date * 1
 
 let confirmMessage = `📢 El usuario @${m.sender.split('@')[0]} ha enviado una publicación para su revisión.  
@@ -180,7 +180,7 @@ if (!suggestionId || !suggestionQueue[suggestionId]) {
 return
 }
 
-const { suggestionText, category, sender, senderName, pp, url, mime } = suggestionQueue[suggestionId]
+const { suggestionText, category, sender, senderName, pp, url, mime, usedPrefix } = suggestionQueue[suggestionId]
 let users = global.db.data.users[response.sender]
 
 if (action === 'no') {
