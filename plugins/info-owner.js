@@ -33,6 +33,7 @@ try {
 m.reply('*Espere un momento...*')
  
 const pais = await getNationalities(official)
+console.log(pais)
 const biografia = await getBiographies(official, conn)
 
 await conn.sendContactArray(m.chat, [
