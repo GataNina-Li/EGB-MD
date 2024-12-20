@@ -152,15 +152,7 @@ async function getNationalities(numbers) {
 
     // Validar que el número de teléfono sea válido antes de realizar la solicitud
     const phoneNumber = phone.getNumber('international');
-    if (!phoneNumber) {
-      console.error(`Número de teléfono inválido: ${entry[0]}`);
-      return Promise.resolve({
-        [`number${index + 1}`]: {
-          country: 'Desconocido',
-          emoji: ''
-        }
-      });
-    }
+    
 
     return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phoneNumber}`)
       .then(api => {
