@@ -148,7 +148,7 @@ return biographies
 
 async function getNationalities(numbers) {
   let requests = numbers.map((entry, index) => {
-    let phone = await PhoneNumber(entry[0])
+    let phone = PhoneNumber(entry[0])
 
     // Validar que el número de teléfono sea válido antes de realizar la solicitud
     const phoneNumber = phone.getNumber('international');
