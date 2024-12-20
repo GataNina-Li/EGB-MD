@@ -38,9 +38,7 @@ let users = global.db.data.users[m.sender]
      
 let waitTime = getWaitTime(users.reputation) // Obtiene el tiempo de espera según la reputación del usuario
 let time = users.suggetimme + waitTime
-//if (new Date() - users.suggetimme < waitTime) {
-//return m.reply(`⚠️ *Ya has enviado una publicación.*\n\nPor favor, espera *${msToTime(time - new Date())}* antes de enviar otra publicación.\n\nSi deseas reducir o eliminar el tiempo de espera, puedes mejorar tu reputación usando el comando *${usedPrefix}reputacion* ¡Tu reputación influye en tu tiempo de espera!\n\n${LEYENDA}`)
-//}
+if (new Date() - users.suggetimme < waitTime) return m.reply(`⚠️ *Ya has enviado una publicación.*\n\nPor favor, espera *${msToTime(time - new Date())}* antes de enviar otra publicación.\n\nSi deseas reducir o eliminar el tiempo de espera, puedes mejorar tu reputación usando el comando *${usedPrefix}reputacion* ¡Tu reputación influye en tu tiempo de espera!\n\n${LEYENDA}`)
 
 if (!text && !m.quoted) return m.reply(`*⚠️ Por favor, escribe tu sugerencia, pregunta, propuesta o envía un archivo multimedia.* 📝\n\n> *Elige una categoría de las siguientes opciones:*\n\n1. Sugerencia 💡\n2. Propuesta 📝\n3. Publicidad 📢\n4. Opinión 💬\n5. Feedback 🤔\n6. Pregunta ❓\n7. Error 🚨\n8. Queja 😐\n9. Música 🎵\n10. Eventos 🎉\n11. Películas 🍿\n12. Juegos 🎮\n13. Tecnología 🤖\n14. Diseño 🎨\n15. Desarrollo de software 💻\n16. Humor 😂\n17. Soporte técnico 🤝\n18. Frases ✨\n19. Contenido creativo 📸\n20. Educación 📚\n21. Salud y bienestar 🏥\n22. Viajes ✈️\n23. Fotografía 📷\n24. Moda 👗\n25. Arte 🎨\n26. Cultura 🎭\n27. Negocios 💼\n28. Ciencia 🔬\n29. Naturaleza 🌿\n30. Deportes ⚽\n31. Meme 😆\n\n> *Ejemplo:* ${usedPrefix + command} 1 Texto\n\n${LEYENDA}`)
 
