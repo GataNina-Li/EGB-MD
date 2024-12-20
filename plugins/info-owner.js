@@ -186,7 +186,7 @@ async function getNationalities(numbers) {
   return finalResults;
 }
 
-async function getBiographies(numbers, conn) {
+/*async function getBiographies(numbers, conn) {
   const biographies = {};
 
   
@@ -209,6 +209,41 @@ async function getBiographies(numbers, conn) {
   
   results.forEach((bio, index) => {
     biographies[`number${index + 1}`] = bio;
+  });
+
+  return biographies;
+}
+*/
+
+async function getBiographies(numbers, conn) {
+  const biographies = {};
+
+  
+  let requests = numbers.map(async ([number], index) => {
+    try {
+      const biografia = await conn.fetchStatus(number).catch(() => null); 
+      let bio = "Ninguna"; 
+
+      
+      if (biografia && biografia[0] && biografia[0].status !== null) {
+        bio = biografia[0].status || "Sin definir";
+      }
+
+      
+      return { [`number${index + 1}`]: bio };
+    } catch (error) {
+      
+      console.error(`Error al obtener biografía para el número ${number}:`, error);
+      return { [`number${index + 1}`]: "Sin definir" };
+    }
+  });
+
+  
+  let results = await Promise.all(requests);
+
+  
+  results.forEach(result => {
+    Object.assign(biographies, result);
   });
 
   return biographies;
