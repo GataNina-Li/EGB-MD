@@ -1,3 +1,4 @@
+import fs from 'fs'
 let WAMessageStubType = (await import(global.baileys)).default
 
 export async function before(m, { conn, participants, groupMetadata }) {
