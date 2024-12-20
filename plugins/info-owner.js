@@ -3,6 +3,7 @@ import axios from 'axios'
 import PhoneNumber from 'awesome-phonenumber'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
+try {
 m.reply('*Espere un momento...*')
  
 const pais = await getNationalities(official)
@@ -42,8 +43,10 @@ contact.sky || contact.github, // Dependiendo del campo disponible
 contact.bio
 ])
 await conn.sendContactArray(m.chat, contactArray, m)
- 
-}
+} catch (error) {
+console.error(error)
+m.reply('Hubo un error al intentar enviar los contactos.')
+}}
 handler.command = /^(owner|contacto|creador|contactos|creadora|creadores)/i
 export default handler
 
