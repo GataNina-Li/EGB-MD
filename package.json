@@ -14,9 +14,7 @@
 "homepage": "https://github.com/GataNina-Li/EGB-MD",
 "author": { "name": "GataNina-Li" }, 
     
-"repository": {
-"type": "git",
-"url": "git+https://github.com/GataNina-Li/EGB-MD.git" },
+"repository": { "type": "git", "url": "git+https://github.com/GataNina-Li/EGB-MD.git" },
  
 "bugs": {
 "url": "https://github.com/GataNina-Li/EGB-MD/issues" },
