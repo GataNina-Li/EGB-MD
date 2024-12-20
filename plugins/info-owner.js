@@ -96,7 +96,7 @@ m.reply('Hubo un error al intentar enviar los contactos.')
 handler.command = /^(owner|contacto|creador|contactos|creadora|creadores)/i
 export default handler
 
-async function getNationalities(numbers) {
+/*async function getNationalities(numbers) {
 let requests = numbers.map((entry, index) => {
 let phone = PhoneNumber(entry[0])
 return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phone.getNumber('international')}`)
@@ -143,4 +143,67 @@ biographies[`number${index + 1}`] = bio
 biographies[`number${index + 1}`] = "Sin definir"
 }}
 return biographies
+}
+*/
+
+async function getNationalities(numbers) {
+  let requests = numbers.map((entry, index) => {
+    let phone = PhoneNumber(entry[0]);
+    return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phone.getNumber('international')}`)
+      .then(api => {
+        let userNationalityData = api.data.result;
+        let userNationality = userNationalityData ? {
+          country: userNationalityData.name,
+          emoji: userNationalityData.emoji
+        } : { country: 'Desconocido', emoji: '' };
+
+        return {
+          [`number${index + 1}`]: {
+            country: userNationality.country,
+            emoji: userNationality.emoji
+          }
+        };
+      }).catch((error) => {
+        console.error("Error al obtener nacionalidad:", error);
+        return {
+          [`number${index + 1}`]: {
+            country: 'Desconocido',
+            emoji: ''
+          }
+        };
+      });
+  });
+
+  
+  let results = await Promise.all(requests);
+  let finalResults = Object.assign({}, ...results);
+  return finalResults;
+}
+
+async function getBiographies(numbers, conn) {
+  const biographies = {};
+
+  
+  let requests = numbers.map(async ([number]) => {
+    try {
+      const biografia = await conn.fetchStatus(number).catch(() => null);
+      let bio = "Ninguna";
+      if (biografia && biografia[0] && biografia[0].status !== null) {
+        bio = biografia[0].status || "Sin definir";
+      }
+      return bio;
+    } catch (error) {
+      return "Sin definir";
+    }
+  });
+
+ 
+  let results = await Promise.all(requests);
+  
+  
+  results.forEach((bio, index) => {
+    biographies[`number${index + 1}`] = bio;
+  });
+
+  return biographies;
 }
