@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 import axios from 'axios'
-import { PhoneNumber } from 'libphonenumber-js'
+import PhoneNumber from 'awesome-phonenumber'
 
 let handler = async (m, { conn, usedPrefix, text, args, command }) => {
 
