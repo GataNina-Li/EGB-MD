@@ -4,8 +4,8 @@ import PhoneNumber from 'awesome-phonenumber'
 
 let handler = async (m, { conn, usedPrefix, text, args, command }) => {
 
-const pais = await getNationalities(officialNumbers)
-const biografia = await getBiographies(officialNumbers)
+const pais = await getNationalities(official)
+const biografia = await getBiographies(official)
 
 const contacts = [
 {
