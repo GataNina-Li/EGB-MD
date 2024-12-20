@@ -314,7 +314,7 @@ let options = { contextInfo: { externalAdReply: {
 title: title, 
 body: body,
 thumbnailUrl: pp, 
-sourceUrl: yt2,
+sourceUrl: accounts,
 mediaType: 1,
 showAdAttribution: false,
 renderLargerThumbnail: false
@@ -328,9 +328,10 @@ fs.unlinkSync(url)
 } else {
 await conn.sendMessage(CANAL_ID, { text: approvedText, contextInfo: options.contextInfo }, { quoted: null })
 }
-await conn.reply(sender, `✅ *¡Tu publicación ha sido aprobada por los administradores!* 🎉\n\n\`Puedes verla en el siguiente canal:\`\n${CANAL_LINK}\n\n¡Gracias por contribuir, sigue publicando es gratis! 🙌`)
+await conn.reply(sender, `✅ *¡Tu publicación ha sido aprobada por los administradores!* 🎉\n\n\`Puedes verla en el siguiente canal:\`\n${CANAL_LINK}\n\n¡Gracias por contribuir, sigue publicando es gratis! 🙌`, null, { mentions: [sender] })
 
 delete suggestionQueue[suggestionId]
+return
 }}
 handler.command = /^(suginfinity)$/i
 
