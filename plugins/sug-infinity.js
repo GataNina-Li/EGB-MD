@@ -190,7 +190,7 @@ users.reputation -= 1
 users.reputation = 0
 }
 await conn.sendMessage(ADMIN_GROUP_ID, { react: { text: "❌", key: response.key } })
-await conn.reply(sender, `⚠️ *Tu publicación ha sido rechazada por los administradores.*\n\n📌 *Motivo del rechazo:* ${reason_motivo}\n\n_Si el motivo no es claro, te invitamos a enviar un nuevo mensaje o contenido_`, null, { mentions: [sender] })
+await conn.reply(sender, `⚠️ *Tu publicación ha sido rechazada por los administradores.*\n\n📌 *Motivo del rechazo:* ${reason_motivo.charAt(0).toUpperCase() + reason_motivo.slice(1)}\n\n_Si el motivo no es claro, te invitamos a enviar un nuevo mensaje o contenido_`, null, { mentions: [sender] })
 delete suggestionQueue[suggestionId]
 return
 }
