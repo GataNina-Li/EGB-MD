@@ -2,8 +2,9 @@ import fetch from 'node-fetch'
 import axios from 'axios'
 import PhoneNumber from 'awesome-phonenumber'
 
-let handler = async (m, { conn, usedPrefix, text, args, command }) => {
-console.log('w')
+let handler = async (m, { conn, usedPrefix, command }) => {
+m.reply('*Espere un momento...*')
+ 
 const pais = await getNationalities(official)
 const biografia = await getBiographies(official, conn)
 
