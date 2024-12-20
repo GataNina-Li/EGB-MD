@@ -11,6 +11,15 @@ const biografia = await getBiographies(official, conn)
 
 
 await conn.sendContactArray(m.chat, [
+[official[1][0], 
+await conn.getName(official[1][0] + '@s.whatsapp.net'), 
+'Mario',
+`📵 No Hacer Spam`, 
+null,
+pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido', 
+'https://dash.skyultraplus.com', 
+biografia.number2
+],
 [official[0][0], 
 await conn.getName(official[0][0] + '@s.whatsapp.net'), 
 'Gata Dios', 
@@ -19,15 +28,7 @@ await conn.getName(official[0][0] + '@s.whatsapp.net'),
 pais.number1 ? `${pais.number1.emoji} ${pais.number1.country}` : 'Desconocido', 
 'https://github.com/GataNina-Li', 
 biografia.number1
-],
-[official[1][0], 
-await conn.getName(official[1][0] + '@s.whatsapp.net'), 
-'Mario',
-`📵 No Hacer Spam`, 
-null,
-pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido', 
-'https://dash.skyultraplus.com', 
-biografia.number2]
+]
 ], m)
 
 /*const contacts = [
