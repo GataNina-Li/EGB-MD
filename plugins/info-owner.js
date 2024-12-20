@@ -20,7 +20,7 @@ handler.help = ['owner', 'contacto', 'creador', 'contactos']
 handler.tags = ['info']
 handler.command = /^(owner|contacto|creador|contactos)/i
 
-handler.register = true
+//handler.register = true
 
 export default handler
 
