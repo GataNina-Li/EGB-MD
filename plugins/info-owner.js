@@ -218,31 +218,31 @@ async function getNationalities(numbers) {
 async function getBiographies(numbers, conn) {
   const biographies = {};
 
-  // Mensaje de inicio del proceso
   console.log("Iniciando la obtención de biografías para los números:", numbers);
 
-  // Creamos las promesas de obtener biografía para cada número
+  // Creamos las promesas para obtener biografía para cada número
   let requests = numbers.map(async ([number], index) => {
+    const formattedNumber = `${number}@s.whatsapp.net`; // Formatear el número
     try {
-      console.log(`Intentando obtener biografía para el número: ${number}`);
+      console.log(`Intentando obtener biografía para el número: ${formattedNumber}`);
 
-      // Llamada a la API de conn
-      const biografia = await conn.fetchStatus(number).catch((error) => {
-        console.error(`Error al intentar obtener la biografía para el número ${number} (catch interno):`, error);
+      // Llamada a la API de conn con el número formateado
+      const biografia = await conn.fetchStatus(formattedNumber).catch((error) => {
+        console.error(`Error al intentar obtener la biografía para el número ${formattedNumber} (catch interno):`, error);
         return null;
       });
 
       // Evaluamos si se obtuvo un resultado válido
       if (biografia && biografia[0] && biografia[0].status !== null) {
-        console.log(`Biografía encontrada para el número ${number}:`, biografia[0].status);
+        console.log(`Biografía encontrada para el número ${formattedNumber}:`, biografia[0].status);
         return { [`number${index + 1}`]: biografia[0].status };
       } else {
-        console.warn(`No se encontró biografía para el número ${number}.`);
+        console.warn(`No se encontró biografía para el número ${formattedNumber}.`);
         return { [`number${index + 1}`]: "Ninguna" };
       }
     } catch (error) {
       // Capturamos cualquier error inesperado
-      console.error(`Error inesperado al obtener la biografía para el número ${number}:`, error);
+      console.error(`Error inesperado al obtener la biografía para el número ${formattedNumber}:`, error);
       return { [`number${index + 1}`]: "Sin definir" };
     }
   });
@@ -265,4 +265,3 @@ async function getBiographies(numbers, conn) {
   console.log("Biografías finales:", biographies);
   return biographies;
 }
-
