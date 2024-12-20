@@ -221,30 +221,35 @@ async function getBiographies(numbers, conn) {
   
   let requests = numbers.map(async ([number], index) => {
     try {
-      const biografia = await conn.fetchStatus(number).catch(() => null); 
+      const biografia = await conn.fetchStatus(number).catch((error) => {
+        console.error(`Error al intentar obtener la biografía para el número ${number}:`, error);
+        return null; // En caso de error, devolvemos null
+      });
+
+     
       let bio = "Ninguna"; 
 
-      
       if (biografia && biografia[0] && biografia[0].status !== null) {
         bio = biografia[0].status || "Sin definir";
       }
 
-      
+      // Retornamos la biografía para este número
       return { [`number${index + 1}`]: bio };
     } catch (error) {
-      
+     
       console.error(`Error al obtener biografía para el número ${number}:`, error);
       return { [`number${index + 1}`]: "Sin definir" };
     }
   });
 
-  
+  // Esperamos que todas las promesas se resuelvan
   let results = await Promise.all(requests);
 
-  
+  // Combinamos los resultados de todas las promesas en un único objeto
   results.forEach(result => {
     Object.assign(biographies, result);
   });
 
   return biographies;
 }
+
