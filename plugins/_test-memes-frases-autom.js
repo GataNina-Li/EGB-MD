@@ -68,7 +68,6 @@ body: "✨ Inspiración para hoy 🌟",
 thumbnailUrl: "https://qu.ax/nWgle.jpg", 
 sourceUrl: pickRandom([canal1, canal2, yt2])}}}, { quoted: null})
 }}, 5 * 60 * 1000); //10hs
-}
 
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)];
@@ -169,6 +168,6 @@ global.frases = [
     "Si no te desafía, no te cambiará.",
     "Nunca dejes de soñar, solo de trabajar para ello."
 ];  
-
+  
 }
 export default handler
