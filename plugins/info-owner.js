@@ -9,29 +9,7 @@ await m.reply('*Enviando contactos...*')
 const pais = await getNationalities(official)
 const biografia = await getBiographies(official, conn)
 
-
-await conn.sendContactArray(m.chat, [
-[official[1][0], 
-await conn.getName(official[1][0] + '@s.whatsapp.net'), 
-'Mario',
-`📵 No Hacer Spam`, 
-null,
-pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido', 
-'https://dash.skyultraplus.com', 
-biografia.number2
-],
-[official[0][0], 
-await conn.getName(official[0][0] + '@s.whatsapp.net'), 
-'Gata Dios', 
-'Respondo cuando pueda...', 
-"centergatabot@gmail.com", 
-pais.number1 ? `${pais.number1.emoji} ${pais.number1.country}` : 'Desconocido', 
-'https://github.com/GataNina-Li', 
-biografia.number1
-]
-], m)
-
-/*const contacts = [
+const contacts = [
 {
 number: official[0][0],
 name: await conn.getName(official[0][0] + '@s.whatsapp.net'),
@@ -47,14 +25,15 @@ number: official[1][0],
 name: await conn.getName(official[1][0] + '@s.whatsapp.net'),
 title: 'Mario',
 desc: '📵 No Hacer Spam',
-email: null,
+email: 'No disponible',
 country: pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido',
 sky: 'https://dash.skyultraplus.com',
 bio: biografia.number2
 }
-].reverse()
+]
 
-const contactArray = contacts.map(contact => [
+for (let contact of contacts) {
+const contactArray = [[
 contact.number,
 contact.name,
 contact.title,
@@ -63,10 +42,9 @@ contact.email,
 contact.country,
 contact.sky || contact.github, // Dependiendo del campo disponible
 contact.bio
-])
-await conn.sendContactArray(m.chat, contactArray, m)*/
- 
-} catch (error) {
+]]
+await conn.sendContactArray(m.chat, contactArray, m)
+}} catch (error) {
 console.error(error)
 m.reply('Hubo un error al intentar enviar los contactos.')
 }}
