@@ -15,6 +15,7 @@ import { en, es, id, ar, pt, de, it } from './lib/idiomas/total-idiomas.js'
 global.owner = [ 
 ['593968263524', 'Gata Dios', true],
 ['5492266613038'], 
+['5214774444444'], 
 ['595976126756'],
 ['593968585383']]
 
