@@ -4,7 +4,7 @@ import axios from 'axios';
 let handler = m => m;
 
 setInterval(async (m) => {
-  const fake2 = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: [canal1, yt].getRandom()}}}  
+  const fake2 = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: [canal1, yt2, dash].getRandom()}}}  
 let CANAL_ID = "120363374372683775@newsletter";
 
   const url = await hispamemes.meme();
@@ -38,7 +38,7 @@ title: "❤️ Piropo",
 body: "🌹 Una palabra bonita para ti 💕",
 "previewType": "PHOTO",
 thumbnailUrl: "https://qu.ax/nWgle.jpg", 
-sourceUrl: pickRandom([canal1, canal2, yt2])}}}, { quoted: null})
+sourceUrl: pickRandom([canal1, canal2, yt2, dash])}}}, { quoted: null})
   }
 
   if (media === 'frases') {
@@ -64,7 +64,7 @@ title: "💬 Frase del día",
 body: "✨ Inspiración para hoy 🌟",
 "previewType": "PHOTO",
 thumbnailUrl: "https://qu.ax/nWgle.jpg", 
-sourceUrl: pickRandom([canal1, canal2, yt2])}}}, { quoted: null})
+sourceUrl: pickRandom([canal1, canal2, yt2, dash])}}}, { quoted: null})
 }}, 5 * 60 * 1000); //10hs
 
 function pickRandom(list) {
