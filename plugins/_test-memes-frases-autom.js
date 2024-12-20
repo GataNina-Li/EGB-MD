@@ -3,7 +3,7 @@ import axios from 'axios';
 
 let handler = m => m;
 
-setInterval(async () => {
+setInterval(async (m) => {
 let CANAL_ID = "120363374372683775@newsletter";
 const fake2 = { contextInfo: { externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: pickRandom([canal1, yt2, dash]), mediaType: 1, showAdAttribution: false,renderLargerThumbnail: false }}}
       
