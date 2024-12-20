@@ -8,8 +8,8 @@ let CANAL_ID = "120363374372683775@newsletter";
 const fake2 = { contextInfo: { externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: pickRandom([canal1, yt2, dash]), mediaType: 1, showAdAttribution: false,renderLargerThumbnail: false }}}
       
 let or = ['memes', 'piropo', 'frases'];
-//let media = pickRandom(or);
-let media = or[Math.floor(Math.random() * 1)]
+let media = pickRandom(or);
+//let media = or[Math.floor(Math.random() * 3)]
 
   if (media === 'memes') {
     const url = await hispamemes.meme();
