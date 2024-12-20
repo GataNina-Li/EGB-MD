@@ -7,11 +7,12 @@ setInterval(async (m) => {
   const fake2 = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, externalAdReply: { title: "😂 Meme 😂", body: "¡Disfruta de un buen meme! 🎉", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: "https://qu.ax/nWgle.jpg", sourceUrl: [canal1, yt2, dash].getRandom()}}}  
 let CANAL_ID = "120363374372683775@newsletter";
 
-  const url = await hispamemes.meme();
-  let or = ['memes', 'piropo', 'frases'];
-  let media = pickRandom(or);
+let or = ['memes', 'piropo', 'frases'];
+//let media = pickRandom(or);
+let media = or[Math.floor(Math.random() * 3)]
 
   if (media === 'memes') {
+    const url = await hispamemes.meme();
     await conn.sendFile(CANAL_ID, url, 'error.jpg', '', m, null, fake2);
   
   } else if (media === 'piropo') {
