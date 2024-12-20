@@ -10,7 +10,7 @@ const pais = await getNationalities(official)
 const biografia = await getBiographies(official, conn)
 
 
-/*await conn.sendContactArray(m.chat, [
+await conn.sendContactArray(m.chat, [
 [official[0][0], 
 await conn.getName(official[0][0] + '@s.whatsapp.net'), 
 'Gata Dios', 
@@ -28,9 +28,9 @@ null,
 pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desconocido', 
 'https://dash.skyultraplus.com', 
 biografia.number2]
-], m)*/
+], m)
 
-const contacts = [
+/*const contacts = [
 {
 number: official[0][0],
 name: await conn.getName(official[0][0] + '@s.whatsapp.net'),
@@ -51,7 +51,7 @@ country: pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desco
 sky: 'https://dash.skyultraplus.com',
 bio: biografia.number2
 }
-]
+].reverse()
 
 const contactArray = contacts.map(contact => [
 contact.number,
@@ -63,7 +63,7 @@ contact.country,
 contact.sky || contact.github, // Dependiendo del campo disponible
 contact.bio
 ])
-await conn.sendContactArray(m.chat, contactArray, m)
+await conn.sendContactArray(m.chat, contactArray, m)*/
  
 } catch (error) {
 console.error(error)
