@@ -52,7 +52,7 @@ country: pais.number2 ? `${pais.number2.emoji} ${pais.number2.country}` : 'Desco
 sky: 'https://dash.skyultraplus.com',
 bio: biografia.number2
 }
-].reverse()
+]
 
 const contactArray = contacts.map(contact => [
 contact.number,
