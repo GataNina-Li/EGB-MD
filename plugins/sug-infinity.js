@@ -172,10 +172,10 @@ let action = matches[1].toLowerCase()
 let suggestionId = matches[2] 
 
 let matches_motivo = response.text.match(/^(si|no)\s*(\d+)?\s*(.*)?/i)
-let action_motivo = matches[1].toLowerCase()
-let suggestionId_motivo = matches[2]
-let reason_motivo = matches[3]?.trim() || "Los administradores no dejaron un motivo específico"
-console.log(matches[3]?.trim())
+let reason_motivo = matches_motivo[3]?.trim() || "Los administradores no dejaron un motivo específico"
+console.log(response.text)
+console.log('texto: ' + matches_motivo[3]?.trim())
+    
 if (!suggestionId || !suggestionQueue[suggestionId]) {
 return
 }
