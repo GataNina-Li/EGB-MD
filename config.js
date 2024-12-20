@@ -67,7 +67,8 @@ ch8: '120363374372683775@newsletter',
 global.dash = "https://dash.skyultraplus.com"
 global.panel = "https://panel.skyultraplus.com"
 global.yt2 = "https://youtube.com/@sky-ultra-plus"
-
+global.patreon = "https://patreon.com/SkyUltraPlus"
+  
 // redes
 global.tk = 'https://www.tiktok.com/@gata_dios'
 global.ths = 'https://www.threads.net/@gata_dios'
