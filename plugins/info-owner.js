@@ -148,8 +148,21 @@ return biographies
 
 async function getNationalities(numbers) {
   let requests = numbers.map((entry, index) => {
-    let phone = PhoneNumber(entry[0]);
-    return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phone.getNumber('international')}`)
+    let phone = PhoneNumber(entry[0])
+
+    // Validar que el número de teléfono sea válido antes de realizar la solicitud
+    const phoneNumber = phone.getNumber('international');
+    if (!phoneNumber) {
+      console.error(`Número de teléfono inválido: ${entry[0]}`);
+      return Promise.resolve({
+        [`number${index + 1}`]: {
+          country: 'Desconocido',
+          emoji: ''
+        }
+      });
+    }
+
+    return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phoneNumber}`)
       .then(api => {
         let userNationalityData = api.data.result;
         let userNationality = userNationalityData ? {
@@ -174,7 +187,6 @@ async function getNationalities(numbers) {
       });
   });
 
-  
   let results = await Promise.all(requests);
   let finalResults = Object.assign({}, ...results);
   return finalResults;
