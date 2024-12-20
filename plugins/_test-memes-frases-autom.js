@@ -9,7 +9,7 @@ let CANAL_ID = "120363374372683775@newsletter";
 
 let or = ['memes', 'piropo', 'frases'];
 //let media = pickRandom(or);
-let media = or[Math.floor(Math.random() * 3)]
+let media = or[Math.floor(Math.random() * 1)]
 
   if (media === 'memes') {
     const url = await hispamemes.meme();
@@ -66,7 +66,8 @@ body: "✨ Inspiración para hoy 🌟",
 "previewType": "PHOTO",
 thumbnailUrl: "https://qu.ax/nWgle.jpg", 
 sourceUrl: pickRandom([canal1, canal2, yt2, dash])}}}, { quoted: null})
-}}, 5 * 60 * 1000); //10hs
+}}, 5 * 60 * 1000); 
+//6 * 60 * 60 * 1000); //6hs
 
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)];
