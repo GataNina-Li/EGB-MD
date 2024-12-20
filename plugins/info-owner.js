@@ -148,13 +148,13 @@ return biographies
 
 async function getNationalities(numbers) {
   let requests = numbers.map((entry, index) => {
-    let phone = PhoneNumber(entry[0])
+    let phone = await PhoneNumber(entry[0])
 
     // Validar que el número de teléfono sea válido antes de realizar la solicitud
     const phoneNumber = phone.getNumber('international');
-    
+    console.log(phoneNumber)
 
-    return axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phoneNumber}`)
+    return await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${phoneNumber}`)
       .then(api => {
         let userNationalityData = api.data.result;
         let userNationality = userNationalityData ? {
