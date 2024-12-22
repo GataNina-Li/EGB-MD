@@ -196,7 +196,7 @@ return
 if (action === 'si') {
 users.reputation += 1
 await conn.sendMessage(ADMIN_GROUP_ID, { react: { text: "✅", key: response.key } })
-let approvedText = `${suggestionText ? `📝 *${category.charAt(0).toUpperCase() + category.slice(1)}:* ${suggestionText || 'Sin descripción'}` : ''}\n\n_¡Envia mensaje a este canal!_\nWa.me/${conn.user.jid.split('@')[0]}?text=${usedPrefix}menu`
+let approvedText = `👤 *Usuario:* ${senderName || 'Anónimo'}\n${suggestionText ? `📝 *${category.charAt(0).toUpperCase() + category.slice(1)}:* ${suggestionText || 'Sin descripción'}` : ''}\n\n> _¡Envia tu mensaje a este canal!_\nWa.me/${conn.user.jid.split('@')[0]}?text=${usedPrefix}menu`
 let title, body
 
 switch (category) {
