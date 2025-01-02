@@ -9,7 +9,7 @@ const handler = async (m, { conn, text, args }) => {
         }
 
         // Consultar a dash.name.com
-        const response = await fetch('https://dash.name.com/api/verify', {
+        const response = await fetch('https://dash.skyultraplus.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
