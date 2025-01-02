@@ -1,26 +1,13 @@
 import { sticker } from '../lib/sticker.js'
 
+const ADMIN_GROUP_ID = "120363317570465699@g.us"
 let handler = async (m, { conn, text }) => {
 try {
-const allowedNumbers = ["595976126756@s.whatsapp.net", 
-"59169214837@s.whatsapp.net",
-"595985547825@s.whatsapp.net",
-"390684003755@s.whatsapp.net",
-"51939249284@s.whatsapp.net",
-"595983799436@s.whatsapp.net",
-"573012482597@s.whatsapp.net",
-"59169082575@s.whatsapp.net",
-"5493876639332@s.whatsapp.net",
-"51928438472@s.whatsapp.net",
-"14697106545@s.whatsapp.net",
-"5214434703586@s.whatsapp.net",
-"5492266613038@s.whatsapp.net",
-"50766066666@s.whatsapp.net",
-"15167096032@s.whatsapp.net",
-"593968263524@s.whatsapp.net",
-"573001766232@s.whatsapp.net"]
+let groupMetadata = await conn.groupMetadata(ADMIN_GROUP_ID)
+let groupAdmins = groupMetadata.participants.filter(p => p.admin)
+const isAdmin = groupAdmins.some(admin => admin.id === m.sender)
   
-if (!allowedNumbers.includes(m.sender)) return m.reply('*❌ No tienes permiso para usar este comando.*')
+if (!isAdmin) return m.reply('*❌ No tienes permiso para usar este comando.*\n\n*Si crees que esto es un error contacta con el staff de este Bot*')
 if (!text && !m.quoted) return m.reply('*⚠️ Ingresa un mensaje o archivo a enviar.*\n\n*Permitido:*\n- Texto\n- Imagen\n- Video\n- Sticker\n- Audio\n\n_El mensaje que envie al canal será anónimo a menos que usted describa de parte de quien es el mensaje, se enviará sin diseños para evitar que parezca mensaje enviado por bot_\n\n_Si dejas de formar parte del staff perderás acceso a este comando, esto fue creado sólo para el Staff Infinity_\n\n_Todo lo que envie con este comando al canal será informado al grupo del staff, toma precaución para evitar problemas_')
   
  let q = m.quoted ? m.quoted : m
