@@ -21,7 +21,7 @@ noadmingp = lenguajeGB.smsAutodetec7(inf, m, groupMetadata, usuario)
 if (chat.detect && m.messageStubType == 2) {
 const chatId = m.isGroup ? m.chat : m.sender;
 const uniqid = chatId.split('@')[0];
-const sessionPath = './GataBotSession/';
+const sessionPath = './EGBSession/';
 const files = await fs.readdir(sessionPath);
 let filesDeleted = 0;
 for (const file of files) {
