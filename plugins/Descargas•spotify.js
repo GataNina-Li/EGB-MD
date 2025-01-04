@@ -118,13 +118,13 @@ let handler = async (m, { conn, command, args }) => {
       m.chat,
       {
         audio: { url: download },
-        mimetype: "audio/mp4",
-        contextInfo: infoReply.contextInfo,
+        mimetype: "audio/mp4"
+        //contextInfo: infoReply.contextInfo,
       },
       { quoted: m }
     );
   } catch (error) {
-    console.error(error);
+    console.error(error)
     m.reply("✦ Ocurrió un error procesando tu solicitud. Inténtalo de nuevo más tarde.");
   }
 };
