@@ -132,7 +132,7 @@ let handler = async (m, { conn, command, args }) => {
 handler.help = ["spotifyplay *<consulta>*"];
 handler.tags = ["downloader"];
 handler.command = /^(spotify|splay)$/i;
-handler.limit = true;
+//handler.limit = true;
 
-export default handler;
+export default handler
 
