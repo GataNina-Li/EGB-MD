@@ -103,6 +103,8 @@ poetix: { name: "🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ", id: "12036337437
 gatabot: { name: "GataBot Test", id: "120363336642332098@newsletter", link: "https://whatsapp.com/channel/0029VatPwXw7Noa8n1Vinx3g", command: "suggatabot" }
 }
 
+global.img = 'https://qu.ax/nWgle.jpg'
+
 let file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
 unwatchFile(file)
