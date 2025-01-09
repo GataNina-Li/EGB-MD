@@ -236,7 +236,7 @@ await conn.reply(sender, `✅ *¡Tu mensaje ha sido aprobada por los administrad
 
 delete suggestionQueue[suggestionId]
 }}
-handler.command = /^(suggatabot|report)$/i
+handler.command = /^(suggatabot)$/i
 
 export default handler
 
