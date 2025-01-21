@@ -194,7 +194,7 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
-chat.delete = !isEnable
+chat.delete = isEnable
 break
 
 case 'antiprivado':

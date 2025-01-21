@@ -9,7 +9,7 @@ const isCommand5 = /^(setdesk|setdesc|newdesc|descripción|descripcion|cambiarde
 const isCommand6 = /^(setname|newnombre|nuevonombre|cambiarnombre)$/i.test(command);
 const isCommand7 = /^(setpp(group|grup|gc)?|cambiarpp)$/i.test(command)
 const isCommand8 = /^(nuevolink|nuevoenlace|revoke|resetlink)$/i.test(command)
-const isCommand9 = /^(kick|echar|hechar|sacar|ban)$/i.test(command)
+//const isCommand9 = /^(kick|echar|hechar|sacar|ban)$/i.test(command)
 const isCommand10 = /^(group|grupo)$/i.test(command)
 const isCommand11 = /^(tagall|invocar|invocacion|todos|invocación)$/i.test(command)
 const isCommand12 = /^(prohibir|prohibit|privar|deprive)$/i.test(command)
@@ -247,7 +247,7 @@ break
 handler.command = /^(promote|daradmin|darpoder|demote|quitarpoder|quitaradmin|setwelcome|bienvenida|edit(?:ar)?wel(?:come)?|setbye|despedida|edit(?:ar)?(bye)?|setdesk|setdesc|newdesc|descripción|descripcion|cambiardesc|setname|newnombre|nuevonombre|cambiarnombre|cambiarpp|setpp(group|grup|gc)?|nuevolink|nuevoenlace|revoke|resetlink|kick|echar|hechar|sacar|ban|group|grupo|tagall|invocar|invocacion|todos|invocación|prohibir|prohibit|privar|deprive|add|agregar|invitar|invite|añadir)$/i
 handler.group = true
 handler.botAdmin = true 
-handler.register = true
+//handler.register = true
 handler.admin = true
 
 export default handler 
