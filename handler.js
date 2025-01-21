@@ -66,6 +66,7 @@ if (!('role' in user)) user.role = '*NOVATO(A)* 🪤'
 if (!user.premium) user.premium = false
 if (!user.premium) user.premiumTime = 0
 if (!user.suggetimme) user.suggetimme = 0
+if (!isNumber(user.warn)) user.warn = 0
 if (!user.reputation) user.reputation = 0
 	                                               		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 } else
@@ -82,6 +83,7 @@ premium: false,
 premiumTime: 0,
 name: m.name,
 GBLanguage: 0,
+warn: 0,
 regTime: -1,
 registered: false,
 role: '*NOVATO(A)* 🪤',
@@ -101,11 +103,11 @@ if (!('sWelcome' in chat)) chat.sWelcome = ''
 if (!('sBye' in chat)) chat.sBye = ''                    
 if (!('sPromote' in chat)) chat.sPromote = ''              
 if (!('sDemote' in chat)) chat.sDemote = '' 
-if (!('delete' in chat)) chat.delete = false                  
+if (!('delete' in chat)) chat.delete = false                      
 if (!('antiver' in chat)) chat.viewonce = false         
 if (!('modoadmin' in chat)) chat.modoadmin = false
 if (!('autorespond' in chat)) chat.autorespond = true     
-if (!('antiLink' in chat)) chat.antiLink = false
+if (!('antiLink' in chat)) chat.antiLink = true
 if (!('antiLink2' in chat)) chat.antiLink2 = false    
 if (!('antiTiktok' in chat)) chat.antiTiktok = false
 if (!('antiYoutube' in chat)) chat.antiYoutube = false
@@ -131,7 +133,7 @@ delete: false,
 antiver: false,
 modoadmin: false,
 autorespond: true,
-antiLink: false,
+antiLink: true,
 antiLink2: false,	
 antiTiktok: false,
 antiYoutube: false,
@@ -151,7 +153,7 @@ if (typeof settings !== 'object') global.db.data.settings[this.user.jid] = {}
 if (settings) {
 if (!('self' in settings)) settings.self = false
 if (!('autoread' in settings)) settings.autoread = false
-if (!('restrict' in settings)) settings.restrict = false
+if (!('restrict' in settings)) settings.restrict = true 
 if (!('antiCall' in settings)) settings.antiCall = true
 if (!('antiPrivate' in settings)) settings.antiPrivate = false
 if (!('autoread2' in settings)) settings.autoread2 = false
@@ -160,7 +162,7 @@ if (!('jadibotmd' in settings)) settings.jadibotmd = true
 self: false,
 autoread: false,
 autoread2: false,
-restrict: false,
+restrict: true,
 antiCall: true,
 antiPrivate: false,
 jadibotmd: true,
@@ -551,16 +553,14 @@ await this.updateBlockStatus(nk.from, 'block')
 export async function deleteUpdate(message) {
 try {
 const { fromMe, id, participant } = message
-if (fromMe)
-return
+if (fromMe) return 
 let msg = this.serializeM(this.loadMessage(id))
-if (!msg)
-return
-let chat = global.db.data.chats[msg.chat] || {}
-let userDelete = `${participant.split`@`[0]}`
-if (chat.delete) 
-return
-//await this.reply(msg.chat, lenguajeGB['smsAntiEliminar'](userDelete).trim(), msg, {mentions: [participant] })
+let chat = global.db.data.chats[msg?.chat] || {}
+if (!chat?.delete) return 
+if (!msg) return 
+if (!msg?.isGroup) return 
+//const antideleteMessage = `*[ ANTI ELIMINAR ]*\n\n@${participant.split`@`[0]} Elimino un mensaje\nEnviando el mensaje...\n\n*Para desactivar esta función escriba:*\n#disable delete`.trim();
+//await this.sendMessage(msg.chat, {text: antideleteMessage, mentions: [participant]}, {quoted: msg})
 this.copyNForward(msg.chat, msg).catch(e => console.log(e, msg))
 } catch (e) {
 console.error(e)

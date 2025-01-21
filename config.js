@@ -50,6 +50,7 @@ global.official = [
 ['5214774444444', '𝗗𝗲𝘀𝗮𝗿𝗿𝗼𝗹𝗹𝗮𝗱𝗼𝗿 𝗢𝗳𝗶𝗰𝗶𝗮𝗹 💻', 1]] 
 
 global.multiplier = 60 // Cuanto más alto, más difícil subir de nivel
+global.maxwarn = '3' // máxima advertencias
 
 // IDs de canales
 global.ch = {
