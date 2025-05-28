@@ -14,7 +14,7 @@ global.accounts = [canal1, canal2, canal3, canal4, canal5, tk, ig, yt, paypal, f
 global.channelRD = await getRandomChannel()
   
 global.fake = { contextInfo: { mentionedJid: null, forwardingScore: 1, isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, serverMessageId: '', newsletterName: channelRD.name }, externalAdReply: { title: "😂😂😂", body: "INFINITY-WA 💫", mediaType: 1, renderLargerThumbnail: false, previewType: `PHOTO`, thumbnailUrl: pp, sourceUrl: [canal1, yt].getRandom()}}}  
-global.fakeChannel = { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.nombre, serverMessageId: -1 }, forwardingScore: 1, externalAdReply: { title: "Bot personalizado by GataNina-Li", body: "Evolution Global Bots", thumbnailUrl: pp, sourceUrl: accounts, mediaType: 1, renderLargerThumbnail: false }}
+global.fakeChannel = { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.nombre, serverMessageId: '' }, forwardingScore: 1, externalAdReply: { title: "Bot personalizado by GataNina-Li", body: "Evolution Global Bots", thumbnailUrl: 'https://qu.ax/YrhFY.jpg', sourceUrl: accounts, mediaType: 1, renderLargerThumbnail: false }}
 global.fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
 
 }
