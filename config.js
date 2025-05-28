@@ -89,11 +89,11 @@ global.canal4 = "https://whatsapp.com/channel/0029VabS4KD8KMqeVXXmkG1D"
 global.canal5 = "https://whatsapp.com/channel/0029VatPwXw7Noa8n1Vinx3g"
 
 // Imágenes en la nube
-global.img = 'https://qu.ax/ZNrwt.jpeg'
+global.img = 'https://qu.ax/LsZie.jpg'
 global.img2 = 'https://qu.ax/Kvbf.jpg'
-global.img3 = 'https://qu.ax/sQfSS.jpg'
-global.img4 = 'https://qu.ax/fCVpY.jpg'
-global.img5 = 'https://qu.ax/nWgle.jpg'
+global.img3 = 'https://qu.ax/kSvuo.jpg'
+global.img4 = 'https://qu.ax/MZFEa.jpg'
+global.img5 = 'https://qu.ax/YiEJf.png'
 
 global.canalIdGB = ["120363160031023229@newsletter", "120363169294281316@newsletter", "120363203805910750@newsletter", "120363302472386010@newsletter", "120363374372683775@newsletter", "120363336642332098@newsletter", "120363190430436554@newsletter"]
 global.canalNombreGB = ["INFINITY-WA 💫", "GB - UPDATE 🐈", "Tips sobre GataBot 🤩", "NEW PROJECT: YartexBot-MD ✨", "🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ", "GataBot Test", "༻🅖🅔🅝ⓑⓛ༺"]
