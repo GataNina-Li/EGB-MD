@@ -24,7 +24,7 @@ import {Low, JSONFile} from 'lowdb'
 import { mongoDB, mongoDBV2 } from './lib/mongoDB.js'
 import store from './lib/store.js'
 import readline from 'readline'
-import NodeCache from 'node-cache'
+//import NodeCache from 'node-cache'
 const { DisconnectReason, useMultiFileAuthState, MessageRetryMap, fetchLatestBaileysVersion, makeCacheableSignalKeyStore, jidNormalizedUser, PHONENUMBER_MCC } = await import('@whiskeysockets/baileys')
 const { CONNECTING } = ws
 const { chain } = lodash
@@ -106,8 +106,8 @@ loadChatgptDB();
 
 global.authFile = `EGBSession`
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile)
-const msgRetryCounterMap = (MessageRetryMap) => { };
-const msgRetryCounterCache = new NodeCache()
+//const msgRetryCounterMap = (MessageRetryMap) => { };
+//const msgRetryCounterCache = new NodeCache()
 const {version} = await fetchLatestBaileysVersion();
 let phoneNumber = global.botNumberCode
 
@@ -197,8 +197,8 @@ let jid = jidNormalizedUser(clave.remoteJid)
 let msg = await store.loadMessage(jid, clave.id)
 return msg?.message || ""
 },
-msgRetryCounterCache,
-msgRetryCounterMap,
+//msgRetryCounterCache,
+//msgRetryCounterMap,
 defaultQueryTimeoutMs: undefined,   
 version: [2, 3000, 1015901307]
 }
