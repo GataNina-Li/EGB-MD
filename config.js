@@ -93,7 +93,7 @@ global.img = 'https://qu.ax/LsZie.jpg'
 global.img2 = 'https://qu.ax/Kvbf.jpg'
 global.img3 = 'https://qu.ax/kSvuo.jpg'
 global.img4 = 'https://qu.ax/MZFEa.jpg'
-global.img5 = 'https://qu.ax/YiEJf.png'
+global.img5 = 'https://qu.ax/Cvtit.jpeg'
 
 global.canalIdGB = ["120363160031023229@newsletter", "120363169294281316@newsletter", "120363203805910750@newsletter", "120363302472386010@newsletter", "120363374372683775@newsletter", "120363336642332098@newsletter", "120363190430436554@newsletter"]
 global.canalNombreGB = ["INFINITY-WA 💫", "GB - UPDATE 🐈", "Tips sobre GataBot 🤩", "NEW PROJECT: YartexBot-MD ✨", "🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ", "GataBot Test", "༻🅖🅔🅝ⓑⓛ༺"]
@@ -103,8 +103,6 @@ infinity: { name: "INFINITY-WA 💫", id: "120363160031023229@newsletter", link:
 poetix: { name: "🌹 Pσҽƚιx ✨ Sƚҽʅʅαɾ 😎 Fυɳ", id: "120363374372683775@newsletter", link: "https://whatsapp.com/channel/0029VayNseN2phHUJygRvH3H", command: "sugpoetix" },
 gatabot: { name: "GataBot Test", id: "120363336642332098@newsletter", link: "https://whatsapp.com/channel/0029VatPwXw7Noa8n1Vinx3g", command: "suggatabot" }
 }
-
-global.img = 'https://qu.ax/nWgle.jpg'
 
 let file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
