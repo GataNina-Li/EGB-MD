@@ -108,7 +108,7 @@ global.authFile = `EGBSession`
 const {state, saveState, saveCreds} = await useMultiFileAuthState(global.authFile)
 //const msgRetryCounterMap = (MessageRetryMap) => { };
 //const msgRetryCounterCache = new NodeCache()
-const {version} = await fetchLatestBaileysVersion();
+const { version } = await fetchLatestBaileysVersion()
 let phoneNumber = global.botNumberCode
 
 const methodCodeQR = process.argv.includes("qr")
@@ -200,7 +200,7 @@ return msg?.message || ""
 //msgRetryCounterCache,
 //msgRetryCounterMap,
 defaultQueryTimeoutMs: undefined,   
-version: [2, 3000, 1015901307]
+version: version
 }
 
 /*const supportedLanguages = ['es', 'en', 'pt', 'ar', 'id']
